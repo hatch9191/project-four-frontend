@@ -1,0 +1,40 @@
+// @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+* {
+  font-family: 'Manrope';
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url('https://images.pexels.com/photos/1070534/pexels-photo-1070534.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+  background-attachment: fixed;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // .home-rows {
+  //   height: calc(100vh / 3);
+  // }
+  h1 {
+    color: whitesmoke;
+  }
+  .centered {
+    align-items: center;
+  }
+}
+
+.login-signup-container {
+  // min-width: 380px;
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  border-radius: 10px;
+  p {
+    margin-top: 10px;
+  }
+  // h2 {
+  //   font-family: 'Great Vibes';
+  // }
+}

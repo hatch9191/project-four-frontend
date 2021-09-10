@@ -12,15 +12,15 @@ import { baseUrl } from '../config'
 // users
 
 export function registerUser(formData) {
-  return axios.post(`${baseUrl}/register`, formData)
+  return axios.post(`${baseUrl}/auth/register/`, formData)
 }
 
 export function loginUser(formData) {
-  return axios.post(`${baseUrl}/login`, formData)
+  return axios.post(`${baseUrl}/auth/login/`, formData)
 }
 
 // posts
 
 export function getAllPosts() {
-  return axios.get(`${baseUrl}/posts`)
+  return axios.get(`${baseUrl}/posts/`)
 }
