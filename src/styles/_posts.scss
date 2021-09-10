@@ -1,0 +1,18 @@
+.special{
+  background-color: pink;
+}
+
+div.contain{
+  max-height: 200px;
+
+}
+
+div.flex-col{
+  flex-direction: column;
+  flex-flow: wrap;
+}
+
+div.testing{
+  display: inline-block;
+  width: 100px;
+}
