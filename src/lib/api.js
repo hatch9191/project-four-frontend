@@ -44,5 +44,11 @@ export function getAllChatsUserIsIn(userId) {
 }
 
 export function getSingleChat(userId, chatId) {
-  return axios.get(`${baseUrl}/auth/profile/${userId}/chats/${chatId}`, headers(), null)
+  return axios.get(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/`, headers(), null)
+}
+
+//* messages
+
+export function createMessage(userId, chatId, formData) {
+  return axios.post(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/messages/`, formData, headers())
 }
