@@ -2,10 +2,12 @@ import React from 'react'
 import { Col, Row, Container } from 'react-bootstrap'
 import RegisterCard from '../auth/RegisterCard'
 import LoginCard from '../auth/LoginCard'
+import { isAuthenticated } from '../../lib/auth'
 
-function Home() {
+function Home({ setLoggedIn }) {
 
   const [registered, setRegistered] = React.useState(false)
+  setLoggedIn(isAuthenticated())
 
   return (
     <Container className="hero" fluid>

@@ -32,3 +32,7 @@ export function followToggle(userId) {
 export function getAllPosts() {
   return axios.get(`${baseUrl}/posts/`)
 }
+
+export function getSinglePost(postId) {
+  return axios.get(`${baseUrl}/posts/${postId}/`, headers())
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Footer() {
+function Footer({ loggedIn }) {
 
   const [postOpen, setPostOpen] = React.useState(false)
   const [termsOpen, setTermsOpen] = React.useState(false)
@@ -46,9 +46,11 @@ function Footer() {
           <Link className="terms-links" to="/privacy">Privacy</Link>
         </div>
       )}
-      <div className="footer-circle" onClick={openPostPopout}>
-        <h1>+</h1>
-      </div>
+      {loggedIn && (
+        <div className="footer-circle" onClick={openPostPopout}>
+          <h1>+</h1>
+        </div>
+      )}
       <div className="footer-circle" onClick={openTermsPopout}>
         <h2>?</h2>
       </div>

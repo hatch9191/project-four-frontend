@@ -16,3 +16,53 @@ div.testing{
   display: inline-block;
   width: 100px;
 }
+
+.posts-body {
+  margin-top: 10vh;
+  max-width: 1450px;
+  columns: 6 auto;
+}
+
+.postcard {
+  width: 14rem;
+  border: none;
+  .post-image {
+    border-radius: 25px;
+  }
+  .body {
+    padding: 5px 8px 8px 8px;
+  }
+}
+
+.card-profile-link {
+  text-decoration: none;
+  color: black;
+}
+
+@media only screen and (max-width: 1395px) {
+  .posts-body {
+    columns: 5 auto;
+  }
+}
+@media only screen and (max-width: 1180px) {
+  .posts-body {
+    columns: 4 auto;
+  }
+}
+@media only screen and (max-width: 935px) {
+  .posts-body {
+    columns: 3 auto;
+  }
+}
+@media only screen and (max-width: 705px) {
+  .posts-body {
+    columns: 2 auto;
+  }
+}
+@media only screen and (max-width: 470px) {
+  .posts-body {
+    display: flex;
+    justify-content: center;
+    columns: 1 auto;
+  }
+}

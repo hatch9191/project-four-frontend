@@ -1,11 +1,17 @@
-
+import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function StandardPostCard({ post }) {
 
   return (
-    <div className="testing">
-      <h1 className="testing">{post.title}</h1>
-    </div>
+    <Link className="card-profile-link" to={`/posts/${post.id}/`} >
+      <Card className="border-0 postcard">
+        <Card.Img className="post-image" variant="top" src={post.image} />
+        <Card.Body className="body">
+          <Card.Title>{post.title}</Card.Title>
+        </Card.Body>
+      </Card>
+    </Link>
   )
 }
 
