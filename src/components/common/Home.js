@@ -23,7 +23,6 @@ function Home() {
             <LoginCard setRegistered={setRegistered}/>
           )}
         </Col>
-        <Col sm></Col>
       </Row>
     </Container>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 import { registerUser } from '../../lib/api'
 
@@ -107,7 +108,9 @@ function RegisterCard({ registered, setRegistered }) {
               Sign Up
             </Button>
           </div>
-          <p className="text-center"><strong><a onClick={handleLogin}>Already have an account? Log in</a></strong></p>
+          <p className="terms-info">By continuing, you agree to Painterest&apos;s <Link className="terms-link" to="/terms">Terms of Service</Link> and acknowledge you&apos;ve read our <Link className="terms-link" to="/privacy">Privacy Policy</Link></p>
+          <hr />
+          <p className="login-toggle" onClick={handleLogin}><strong>Already have an account? Log in</strong></p>
         </Form>
       </Container>
     </>

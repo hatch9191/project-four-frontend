@@ -1,12 +1,6 @@
-// @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
-
-* {
-  font-family: 'Manrope';
-}
-
 .hero {
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url('https://images.pexels.com/photos/1070534/pexels-photo-1070534.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
@@ -26,15 +20,32 @@
 }
 
 .login-signup-container {
-  // min-width: 380px;
   background-color: white;
   padding-top: 20px;
   padding-bottom: 15px;
-  border-radius: 10px;
-  p {
-    margin-top: 10px;
+  border-radius: 15px;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  h4 {
+    margin-bottom: 15px;
+    text-align: center;
   }
-  // h2 {
-  //   font-family: 'Great Vibes';
-  // }
+  hr {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .terms-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+  }
+  .login-toggle {
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .terms-info {
+    margin-top: 15px;
+    font-size: smaller;
+    text-align: center;
+  }
 }

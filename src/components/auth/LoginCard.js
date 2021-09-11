@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Form, Button, Container } from 'react-bootstrap'
 
 import { loginUser } from '../../lib/api'
@@ -71,7 +71,9 @@ function LoginCard({ setRegistered }) {
               Login
             </Button>
           </div>
-          <p className="text-center"><strong><a onClick={handleSignUp}>Not on Painterest yet? Sign up</a></strong></p>
+          <p className="terms-info">By continuing, you agree to Painterest&apos;s <Link className="terms-link" to="/terms">Terms of Service</Link> and acknowledge you&apos;ve read our <Link className="terms-link" to="/privacy">Privacy Policy</Link></p>
+          <hr />
+          <p className="login-toggle" onClick={handleSignUp}><strong>Not on Painterest yet? Sign up</strong></p>
         </Form>
       </Container>
     </>
