@@ -43,3 +43,29 @@ flex-row-center{
 .normal-text:hover{
   color: black;
 }
+
+div.flex-row-start.b1{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.no-decoration{
+  text-decoration: none;
+}
+
+.hidden{
+  display: none;
+}
+
+.upload-btn{
+  color: #0d6efd;
+  // border: 1px solid black;
+  // border-radius: 3px;
+  // padding: 2px 4px;
+}
+
+.upload-btn:hover{
+  cursor: pointer;
+}

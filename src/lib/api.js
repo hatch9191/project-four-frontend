@@ -23,6 +23,10 @@ export function getSingleUser(userId) {
   return axios.get(`${baseUrl}/auth/profile/${userId}/`, headers())
 }
 
+export function editUser(userId, formData) {
+  return axios.put(`${baseUrl}/auth/profile/${userId}/edit/`, formData, headers())
+}
+
 export function followToggle(userId) {
   return axios.post(`${baseUrl}/auth/profile/${userId}/follow/`, null, headers())
 }
@@ -35,4 +39,20 @@ export function getAllPosts() {
 
 export function getSinglePost(postId) {
   return axios.get(`${baseUrl}/posts/${postId}/`, headers())
+}
+
+//* chats
+
+export function getAllChatsUserIsIn(userId) {
+  return axios.get(`${baseUrl}/auth/profile/${userId}/loaduserchats/`, headers(), null)
+}
+
+export function getSingleChat(userId, chatId) {
+  return axios.get(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/`, headers(), null)
+}
+
+//* messages
+
+export function createMessage(userId, chatId, formData) {
+  return axios.post(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/messages/`, formData, headers())
 }

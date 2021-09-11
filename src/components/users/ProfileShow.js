@@ -1,9 +1,12 @@
 import React from 'react'
-import { Container, Modal } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { useLocation, useParams, Link } from 'react-router-dom'
 
 import Error from '../extras/Error'
 import Loading from '../extras/Loading'
+import FollowersModalComponent from './FollowersModalComponent'
+import FollowingModalComponent from './FollowingModalComponent'
+import EditProfileModalComponent from './EditProfileModalComponent'
 import { followToggle, getSingleUser } from '../../lib/api'
 import { getPayLoad, isOwner, isAuthenticated } from '../../lib/auth'
 
@@ -21,8 +24,7 @@ function ProfileShow() {
   const [createdPosts, setCreatedPosts] = React.useState(false)
   const [modalShow, setModalShow] = React.useState(false)
   const [modalFollowingShow, setModalFollowingShow] = React.useState(false)
-
-
+  const [modalEditShow, setModalEditShow] = React.useState(false)
 
   React.useEffect(() => {
     async function getData() {
@@ -31,6 +33,7 @@ function ProfileShow() {
         setUserData(response.data)
         setModalShow(false)
         setModalFollowingShow(false)
+        setModalEditShow(false)
       } catch (err) {
         setIsError(true)
         console.log(err)
@@ -100,67 +103,26 @@ function ProfileShow() {
 
   const FollowersModal = (props) => {
     return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Followers
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="flex-row-center">
-          <div>
-            {userData && userData.followedBy.length < 1 && (
-              <div><p >{userData.username} has no followers</p></div>
-            )}
-            {userData && userData.followedBy.length > 0 &&
-              userData.followedBy.map(follower => (
-                <div key={follower.id}><Link className="normal-text" to={`/profile/${follower.id}/`}><p>{follower.username}</p></Link></div>
-              ))
-            }
-          </div>
-        </Modal.Body>
-      </Modal>
+      <FollowersModalComponent props={props} userData={userData} />
     )
   }
 
   const FollowingModal = (props) => {
     return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Following
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="flex-row-center">
-          <div>
-            {userData && userData.following.length < 1 && (
-              <div><p >{userData.username} is not following anyone</p></div>
-            )}
-            {userData && userData.following.length > 0 &&
-              userData.following.map(follow => (
-                <div key={follow.id}><Link className="normal-text" to={`/profile/${follow.id}/`}><p>{follow.username}</p></Link></div>
-              ))
-            }
-          </div>
-        </Modal.Body>
-      </Modal>
+      <FollowingModalComponent props={props} userData={userData} />
+    )
+  }
+
+  const EditProfileModal = (props) => {
+    return (
+      <EditProfileModalComponent props={props} userData={userData} setModalEditShow={setModalEditShow} setUserData={setUserData} />
     )
   }
 
 
-
   return (
     <>
-      <Container fluid>
+      <Container fluid className="pt-4 mt-4">
         <div>
           {loading && <Loading />}
           {isError && <Error />}
@@ -180,6 +142,11 @@ function ProfileShow() {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
               />
+              <EditProfileModal
+                show={modalEditShow}
+                onHide={() => setModalEditShow(false)}
+              />
+
               {isAuthenticated() &&
                 <div>
                   {canFollow ?
@@ -198,8 +165,8 @@ function ProfileShow() {
                     </>
                     :
                     <>
-                      {owner && <i className="fas fa-pen pop-out p-2 mx-1"></i>}
-                      {owner && <i className="fas fa-inbox pop-out p-2 mx-1"></i>}
+                      {owner && <a className="normal-text cursor-pointer" onClick={() => setModalEditShow(true)}><i className="fas fa-pen pop-out p-2 mx-1"></i></a>}
+                      {owner && <Link to={`/profile/${userId}/chats`} className="normal-text cursor-pointer"><i className="fas fa-inbox pop-out p-2 mx-1"></i></Link>}
                     </>
                   }
                 </div>
@@ -232,7 +199,6 @@ function ProfileShow() {
           }
         </div>
       </Container>
-
     </>
   )
 }
