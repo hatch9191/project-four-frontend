@@ -28,6 +28,5 @@ export function isAuthenticated() {
 export function isOwner(userId) {
   const payload = getPayLoad()
   if (!payload) return false
-  console.log(payload.sub)
   return userId === payload.sub
 }

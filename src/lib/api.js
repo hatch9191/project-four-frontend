@@ -23,6 +23,10 @@ export function getSingleUser(userId) {
   return axios.get(`${baseUrl}/auth/profile/${userId}/`, headers())
 }
 
+export function editUser(userId, formData) {
+  return axios.put(`${baseUrl}/auth/profile/${userId}/edit/`, formData, headers())
+}
+
 export function followToggle(userId) {
   return axios.post(`${baseUrl}/auth/profile/${userId}/follow/`, null, headers())
 }
@@ -31,4 +35,14 @@ export function followToggle(userId) {
 
 export function getAllPosts() {
   return axios.get(`${baseUrl}/posts/`)
+}
+
+//* chats
+
+export function getAllChatsUserIsIn(userId) {
+  return axios.get(`${baseUrl}/auth/profile/${userId}/loaduserchats/`, headers(), null)
+}
+
+export function getSingleChat(userId, chatId) {
+  return axios.get(`${baseUrl}/auth/profile/${userId}/chats/${chatId}`, headers(), null)
 }

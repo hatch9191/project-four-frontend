@@ -12,6 +12,8 @@ import Cookies from './components/common/Cookies'
 import Contact from './components/common/Contact'
 import Navigation from './components/common/Navigation'
 import ProfileShow from './components/users/ProfileShow'
+import ChatsIndex from './components/chats/ChatsIndex'
+import ChatShow from './components/chats/ChatShow'
 
 function App() {
 
@@ -34,6 +36,8 @@ function App() {
         <Route path="/contact" component={Contact} />
         <Route path="/cookies" component={Cookies} />
         <Route path="/privacy" component={Privacy} />
+        <Route path="/profile/:userId/chats/:chatId" component={ChatShow} />
+        <Route path="/profile/:userId/chats" component={ChatsIndex} />
         <Route path="/profile/:userId" component={ProfileShow} />
       </Switch>
       <Footer />
