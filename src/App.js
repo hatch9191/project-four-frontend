@@ -5,6 +5,7 @@ import { getAllPosts } from './lib/api'
 import ScrollTop from './hooks/ScrollTop'
 import Home from './components/common/Home'
 import Posts from './components/common/Posts'
+import ProfileShow from './components/users/ProfileShow'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/posts" component={Posts} />
+        <Route path="/profile/:userId" component={ProfileShow} />
       </Switch>
     </BrowserRouter >
   )
