@@ -1,6 +1,5 @@
 import React from 'react'
 // import { Container, Row, Col } from 'react-bootstrap'
-
 import { getAllPosts } from '../../lib/api'
 // import StandardPostCard from '../posts/StandardPostCard'
 
@@ -22,6 +21,9 @@ function Posts() {
     }
     getPostsData()
   }, [])
+
+
+
 
   return (
     <>
