@@ -1,0 +1,79 @@
+
+.message-head {
+  position: fixed;
+  z-index: 1;
+  div.message-popout-create {
+    position: fixed;
+    top: 56px;
+    right: 170px;
+    background-color: white;
+    border-radius: 15px;
+    // padding: 10px;
+    border: 1px solid rgba(68, 68, 165, 0.06);
+    box-shadow: rgba(150, 150, 160, 0.3) 0.35rem 0.35rem 0.4rem;
+    min-width: 340px;
+    max-width: 340px;
+    hr {
+      margin: 0;
+    }
+    .show-off-message {
+      padding-top: 8px;
+    }
+    .create-message {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      span {
+        margin-right: 10px;
+        font-size: xx-large;
+        font-weight: 600;
+      }
+    }
+    .create-message:hover {
+      color: gray;
+    }
+  }
+}
+
+.flex-row-col-2{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.chat-profile-image{
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.chat-line-elements{
+  display: inline-block;
+}
+
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p.no-decoration.b-1{
+  text-decoration: none;
+  color: black;
+  border-bottom: 0;
+}
+
+.flex-col-start{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.hover-color:hover{
+  background-color: rgb(233, 232, 232);
+}
