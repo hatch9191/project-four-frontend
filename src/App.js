@@ -44,7 +44,9 @@ function App() {
         <Route exact path="/" >
           <Home setLoggedIn={setLoggedIn} />
         </Route>
-        <Route path="/posts/:postId/" component={PostDetail} />
+        <Route path="/posts/:postId/" >
+          <PostDetail />
+        </Route>
         <Route exact path="/posts/" >
           <Posts
             setLoggedIn={setLoggedIn}
