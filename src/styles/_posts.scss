@@ -1,24 +1,5 @@
-.special{
-  background-color: pink;
-}
-
-div.contain{
-  max-height: 200px;
-
-}
-
-div.flex-col{
-  flex-direction: column;
-  flex-flow: wrap;
-}
-
-div.testing{
-  display: inline-block;
-  width: 100px;
-}
-
 .posts-body {
-  margin-top: 10vh;
+  margin-top: 65px;
   max-width: 1450px;
   columns: 6 auto;
 }
@@ -39,6 +20,70 @@ div.testing{
   color: black;
 }
 
+.detail-page {
+  margin-top: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-card {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+  background-color: white;
+  width: 1000px;
+  height: 600px;
+  border-radius: 25px;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  .detail-image { 
+    width: 45%;
+    height: 95%;
+    max-height: 660px;
+    img {
+      width: 100%;
+      border-radius: 25px;
+    }
+  }
+  .detail-text {
+    // border: black solid 1px;
+    width: 50%;
+    height: 95%;
+    .top-line{
+      display: flex;
+      justify-content: flex-end;
+      .save-button {
+        border-radius: 25px;
+        font-weight: bold;
+        border: none;
+        height: 40px;
+        padding-left: 15px;
+        padding-right: 15px;
+      } 
+    }
+  }
+  .owner-follow {
+    display: flex;
+    justify-content: space-between;
+    .follow-button, .following-button {
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      height: 40px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .follow-button {
+      color: #000;
+      background-color: rgb(231, 231, 231);
+    }
+    .follow-button:hover { 
+      background-color: rgb(190, 190, 190);
+    }
+  }
+}
+
 @media only screen and (max-width: 1395px) {
   .posts-body {
     columns: 5 auto;
@@ -54,6 +99,25 @@ div.testing{
     columns: 3 auto;
   }
 }
+@media only screen and (max-width: 750px) {
+  .detail-card { 
+    flex-direction: column;
+    justify-content: center;
+    height: 800px;
+    .detail-image { 
+      width: 90%;
+      // border: 1px black solid;
+      // margin: 20px 0 0 0;
+      height: 45%;
+    }
+    .detail-text {
+      // border: black solid 1px;
+      width: 90%;
+      height: 50%;
+    }
+  }
+}
+
 @media only screen and (max-width: 705px) {
   .posts-body {
     columns: 2 auto;

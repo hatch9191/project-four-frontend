@@ -13,12 +13,9 @@ import Cookies from './components/common/Cookies'
 import Contact from './components/common/Contact'
 import Navigation from './components/common/Navigation'
 import ProfileShow from './components/users/ProfileShow'
-<<<<<<< HEAD
 import PostDetail from './components/posts/PostDetail'
-=======
 import ChatsIndex from './components/chats/ChatsIndex'
 import ChatShow from './components/chats/ChatShow'
->>>>>>> development
 
 function App() {
 
@@ -47,8 +44,9 @@ function App() {
         <Route exact path="/" >
           <Home setLoggedIn={setLoggedIn} />
         </Route>
-        <Route path="/profile/:userId/" component={ProfileShow} />
-        <Route path="/posts/:postId/" component={PostDetail} />
+        <Route path="/posts/:postId/" > 
+          <PostDetail />
+        </Route>
         <Route exact path="/posts/" >
           <Posts 
             setLoggedIn={setLoggedIn} 

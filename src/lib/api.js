@@ -41,6 +41,10 @@ export function getSinglePost(postId) {
   return axios.get(`${baseUrl}/posts/${postId}/`, headers())
 }
 
+export function savePost(postId) {
+  return axios.post(`${baseUrl}/posts/${postId}/save/`, null, headers())
+}
+
 //* chats
 
 export function getAllChatsUserIsIn(userId) {
