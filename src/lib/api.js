@@ -8,7 +8,6 @@ function headers() {
   }
 }
 
-
 //* users
 
 export function registerUser(formData) {
@@ -49,6 +48,14 @@ export function getAllChatsUserIsIn(userId) {
 
 export function getSingleChat(userId, chatId) {
   return axios.get(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/`, headers(), null)
+}
+
+export function checkForExistingChat(userId) {
+  return axios.get(`${baseUrl}/auth/profile/${userId}/loadchats/`, headers(), null)
+}
+
+export function createAChat(userId) {
+  return axios.post(`${baseUrl}/auth/profile/${userId}/chats/`, headers(), headers())
 }
 
 //* messages

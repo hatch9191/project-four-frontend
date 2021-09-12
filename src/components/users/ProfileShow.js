@@ -1,17 +1,19 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import { useLocation, useParams, Link } from 'react-router-dom'
+import { useLocation, useParams, Link, useHistory } from 'react-router-dom'
 
 import Error from '../extras/Error'
 import Loading from '../extras/Loading'
 import FollowersModalComponent from './FollowersModalComponent'
 import FollowingModalComponent from './FollowingModalComponent'
 import EditProfileModalComponent from './EditProfileModalComponent'
-import { followToggle, getSingleUser } from '../../lib/api'
+import ChatIndexModalComponent from './ChatIndexModalComponent'
+import { checkForExistingChat, createAChat, followToggle, getSingleUser, getAllChatsUserIsIn } from '../../lib/api'
 import { getPayLoad, isOwner, isAuthenticated } from '../../lib/auth'
 
 function ProfileShow() {
   const { userId } = useParams()
+  const history = useHistory()
   const [userData, setUserData] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const loading = !userData && !isError
@@ -25,6 +27,10 @@ function ProfileShow() {
   const [modalShow, setModalShow] = React.useState(false)
   const [modalFollowingShow, setModalFollowingShow] = React.useState(false)
   const [modalEditShow, setModalEditShow] = React.useState(false)
+  const [modalChatShow, setModalChatShow] = React.useState(false)
+  const [chatArray, setChatArray] = React.useState(null)
+  const [userChats, setUserChats] = React.useState(null)
+
 
   React.useEffect(() => {
     async function getData() {
@@ -34,6 +40,9 @@ function ProfileShow() {
         setModalShow(false)
         setModalFollowingShow(false)
         setModalEditShow(false)
+        setModalChatShow(false)
+        const res = await checkForExistingChat(userId)
+        setChatArray(res.data)
       } catch (err) {
         setIsError(true)
         console.log(err)
@@ -41,6 +50,20 @@ function ProfileShow() {
     }
     getData()
   }, [userId])
+
+
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await getAllChatsUserIsIn(userData.id)
+        setUserChats(res.data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [userData])
+
 
   React.useEffect(() => {
     const areYouOwner = isOwner(parseInt(userId))
@@ -119,6 +142,25 @@ function ProfileShow() {
     )
   }
 
+  const ChatModal = (props) => {
+    return (
+      <ChatIndexModalComponent props={props} userData={userData} setModalChatShow={setModalChatShow} setUserData={setUserData} userChats={userChats} />
+    )
+  }
+
+  const handeChatRequest = async () => {
+    if (chatArray.length < 1) {
+      try {
+        const res = await createAChat(userId)
+        history.push(`/profile/${userId}/chats/${res.data.id}`)
+      } catch (err) {
+        console.log(err)
+      }
+    } else {
+      history.push(`/profile/${userId}/chats/${chatArray[0].id}`)
+    }
+  }
+
 
   return (
     <>
@@ -146,7 +188,10 @@ function ProfileShow() {
                 show={modalEditShow}
                 onHide={() => setModalEditShow(false)}
               />
-
+              <ChatModal
+                show={modalChatShow}
+                onHide={() => setModalChatShow(false)}
+              />
               {isAuthenticated() &&
                 <div>
                   {canFollow ?
@@ -154,12 +199,12 @@ function ProfileShow() {
                       {!following ? (
                         <>
                           <i onClick={handleFollow} className="fas fa-user-plus pop-out p-2 mx-1"></i>
-                          <i className="fas fa-comments pop-out p-2 mx-1"></i>
+                          <i onClick={handeChatRequest} className="fas fa-comments pop-out p-2 mx-1"></i>
                         </>
                       ) : (
                         <>
                           <i onClick={handleFollow} className="fas fa-user-times pop-out p-2 mx-1"></i>
-                          <i className="fas fa-comments pop-out p-2 mx-1"></i>
+                          <i onClick={handeChatRequest} className="fas fa-comments pop-out p-2 mx-1"></i>
                         </>
                       )}
                     </>
@@ -167,6 +212,7 @@ function ProfileShow() {
                     <>
                       {owner && <a className="normal-text cursor-pointer" onClick={() => setModalEditShow(true)}><i className="fas fa-pen pop-out p-2 mx-1"></i></a>}
                       {owner && <Link to={`/profile/${userId}/chats`} className="normal-text cursor-pointer"><i className="fas fa-inbox pop-out p-2 mx-1"></i></Link>}
+                      {owner && <a className="normal-text cursor-pointer" onClick={() => setModalChatShow(true)}><i className="fas fa-inbox pop-out p-2 mx-1"></i></a>}
                     </>
                   }
                 </div>
@@ -199,6 +245,7 @@ function ProfileShow() {
           }
         </div>
       </Container>
+      {chatArray && console.log('chatarry', chatArray.length)}
     </>
   )
 }
