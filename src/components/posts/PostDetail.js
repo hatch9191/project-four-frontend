@@ -9,8 +9,9 @@ import CommentForm from '../comments/CommentForm'
 import CommentDelete from './postOther/CommentDelete'
 import Error from '../extras/Error'
 import Loading from '../extras/Loading'
+import StandardPostCard from './StandardPostCard'
 
-function PostDetail() {
+function PostDetail({ posts }) {
 
   const { postId } = useParams()
   const user = getPayLoad().sub
@@ -166,15 +167,19 @@ function PostDetail() {
                       </div>
                     ))}
                   </div>
+                  <CommentForm setPost={setPost} userData={userData} />
                 </div>
               </div>
-              <CommentForm setPost={setPost} userData={userData} />
+              {/* <CommentForm setPost={setPost} userData={userData} /> */}
             </div>
           </div>
         )}
       </Container>
       <Container className="related-posts">
         <h4>More Like This</h4>
+      </Container>
+      <Container className="posts-body related" >
+        {posts && posts.map(post => <StandardPostCard post={post} key={post.id} />)}
       </Container>
     </>
   )

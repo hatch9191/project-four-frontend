@@ -40,6 +40,10 @@ export function getSinglePost(postId) {
   return axios.get(`${baseUrl}/posts/${postId}/`, headers())
 }
 
+export function filterPosts(searchInput) {
+  return axios.get(`${baseUrl}/posts/search?q=${searchInput}`, headers())
+}
+
 export function savePost(postId) {
   return axios.post(`${baseUrl}/posts/${postId}/save/`, null, headers())
 }

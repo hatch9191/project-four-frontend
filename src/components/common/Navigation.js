@@ -1,50 +1,48 @@
 import React from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import { Navbar, Container, Nav, Form } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 import AsyncSelect from 'react-select/async'
 
+import { filterPosts } from '../../lib/api'
 import { removeToken } from '../../lib/auth'
 
-function Navigation({ loggedIn, posts }) {
+function Navigation({ loggedIn, filteredPosts, setFilteredPosts }) {
 
   const history = useHistory()
-  
+  const [query, setQuery] = React.useState('')
+  const styles = {
+    control: styles => ({ ...styles, backgroundColor: 'whitesmoke', borderRadius: '20px' }),
+  }
 
   const handleLogout = () => {
     removeToken()
     history.push('/')
   }
-  console.log(posts)
 
-  // const filterPosts = (e) => {
-  //   setOptions(posts.filter(post =>
-  //     post.title.toLowerCase().includes(e.target.value.toLowerCase())
-  //   ))
-  //   console.log(options)
-  //   setTimeout(() => {
-  //     return options
-  //   }, 1000)
-  // }
-
-  // const postsTitles = () => {
-
-  // }
-
-  const styles = {
-    control: styles => ({ ...styles, backgroundColor: 'whitesmoke', borderRadius: '20px' }),
+  const loadOptions = async () => {
+    const res = await filterPosts(query)
+    setFilteredPosts(res.data)
+    return res.data
   }
 
-  // const [query, setQuery] = React.useState('')
-  // const [collabs, setCollabs] = useState('')
-  // const [loadOptions, setLoadOptions] = React.useState([])
-  // setLoadOptions(posts.map(post => post.title))
+  const handleSubmit = () => {
+    if (filteredPosts.length < 2) {
+      history.push(`/posts/${filteredPosts[0].id}/`)
+    } else if (!query) {
+      history.push('/posts/')
+    } else {
+      history.push(`/posts/search?=q${query}`)
+    }
+  }
+
+  console.log(filteredPosts)
 
   return (
     <Navbar className="navigation" fixed="top" expand="sm">
       <Container className="nav-layout">
         <Navbar.Brand href="/" className="nav-logo">
           <img
-            alt=""
+            alt="logo"
             src="https://res.cloudinary.com/dn11uqgux/image/upload/v1631312231/sei_project_3_studio_images/icons8-modern-art-96_iiqscv.png"
             width="30"
             height="30"
@@ -54,26 +52,23 @@ function Navigation({ loggedIn, posts }) {
         </Navbar.Brand>
         {loggedIn && (
           <>
-            {/* <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="  Search"
-                className="mr-2 search"
-                aria-label="Search"
-                onChange={filterPosts}
-              />
-            </Form> */}
             <Container>
-              <AsyncSelect
-                // classNamePrefix="search"
-                cacheOptions
-                // loadOptions={loadOptions}
-                // defaultOptions
-                placeholder="Search"
-                styles={styles}
-                // onInputChange={value => posts.filter(post => setQuery(post.title.toLowerCase().includes(value.toLowerCase())))}
-                // onChange={(value) => setCollabs(value)}
-              />
+              <Form onSubmit={handleSubmit}>
+                <AsyncSelect
+                  isMulti
+                  placeholder="Search"
+                  // defaultOptions={posts}
+                  focusDefaultOption
+                  loadOptions={loadOptions}
+                  styles={styles}
+                  onInputChange={(value) => setQuery(value)}
+                  // onChange={(value) => setQuery(value)}
+                  // ref={selectRef}
+                  // onInputChange={(value) => {
+                  //   selectRef.current.select.getNextFocusedOption = () => false
+                  // }}
+                />
+              </Form>
             </Container>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">

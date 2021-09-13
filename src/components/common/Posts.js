@@ -10,10 +10,8 @@ function Posts({ setLoggedIn, posts }) {
 
   return (
     <>
-      <Container className="posts-body" fluid>
-        <div className="flex-col contain">
-          {posts && posts.map(post => <StandardPostCard post={post} key={post.id} />)}
-        </div>
+      <Container className="posts-body" >
+        {posts && posts.map(post => <StandardPostCard post={post} key={post.id} />)}
       </Container>
     </>
   )

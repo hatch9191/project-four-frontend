@@ -21,12 +21,14 @@ function App() {
 
   const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
   const [posts, setPosts] = React.useState(null)
+  const [filteredPosts, setFilteredPosts] = React.useState(null)
 
   React.useEffect(() => {
     const getPostsData = async () => {
       try {
         const res = await getAllPosts()
         setPosts(res.data)
+        setFilteredPosts(res.data)
         console.log(res.data)
       } catch (err) {
         console.log(err)
@@ -42,14 +44,22 @@ function App() {
       <Navigation 
         loggedIn={loggedIn} 
         posts={posts}
+        setPosts={setPosts}
+        filteredPosts={filteredPosts}
+        setFilteredPosts={setFilteredPosts}
       />
       <Switch>
         <Route exact path="/" >
           <Home setLoggedIn={setLoggedIn} />
         </Route>
         <Route path="/posts/:postId/" >
-          <PostDetail />
+          <PostDetail posts={posts} />
         </Route>
+        {/* <Route exact path="/posts/search?q=" >
+          <FilteredPosts
+            filteredPosts={filteredPosts}
+          />
+        </Route> */}
         <Route exact path="/posts/" >
           <Posts
             setLoggedIn={setLoggedIn}
