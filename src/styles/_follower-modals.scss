@@ -1,0 +1,79 @@
+.flex-col-start-2{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.custom-dialog{
+  width: 500px;
+  max-width: 500px!important;
+}
+
+.flex-row-start-center{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile-images{
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.bottom-border{
+  border-bottom: 1px solid black;
+}
+
+.flex-row-col-3{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button.close{
+  border-radius: 50%;
+  border: 1px solid grey;
+  background: white;
+  height: auto;
+  width: 2rem;
+  span{
+    font-weight: bold;
+  }
+}
+
+button.follow-btn, button.following-btn{
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  height: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+button.follow-btn {
+  color: #000;
+  background-color: rgb(231, 231, 231);
+}
+button.follow-btn:hover { 
+  background-color: rgb(190, 190, 190);
+}
+
+.extra-width{
+  width: 8rem;
+  color: white;
+}
+
+.scroll-height{
+  overflow: scroll;
+  height: 370px;
+}
+
+// .flex-center-2{
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }

@@ -6,6 +6,8 @@ import { isAuthenticated } from '../../lib/auth'
 
 function Posts({ setLoggedIn, posts }) {
 
+
+
   setLoggedIn(isAuthenticated())
 
   return (

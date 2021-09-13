@@ -1,0 +1,108 @@
+.flex-center-3{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .width-set{
+    min-width: 450px;
+    max-width: 600px;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 10px;
+    // height: 85vh;
+  }
+  .flex-row-start{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .flex-row-start-2{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  .flex-col-around{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: flex-start;
+  }
+  .message-col{
+    overflow: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 500px;
+    max-height: 74vh;
+    min-height: 74vh;
+    background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.1)), url('https://res.cloudinary.com/dk0r9bcxy/image/upload/v1631561665/project-4/bg_dqhuyo.jpg');
+    background-position: cover;
+    background-repeat: no-repeat;
+    padding: 10px;
+    border-bottom: 1px solid rgb(218, 218, 218);
+    border-top: 1px solid rgb(218, 218, 218);
+  }
+  .message-profile-image{
+    height: 45px;
+    width: 45px;
+    min-width: 45px;
+    border-radius: 50%;
+  }
+  .flex-row-full{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 10px 0;
+  }
+  .border-rounded{
+    border-radius: 20px;  
+  }
+  .display-inline-block{
+    display: inline-block;
+    width: 100%;
+  }
+  .message-text{
+    border-radius: 10px;
+    max-width: 300px;
+    min-width: 150px;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: white;
+  }
+  .width-200{
+    max-width: 36em !important; 
+    max-width: 90ch !important;
+    overflow-wrap: break-word !important;
+  }
+  .flex-row-end{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
+  .ml-2-img{
+    margin-left: 8px;
+  }
+  .px-2-mx-2{
+    margin: 8px 0;
+  }
+  a.no-text-decoration.b-1.b-2{
+    text-decoration: none;
+    color: rgb(46, 46, 46);
+    border-bottom: 0;
+  }
+  p.no-text-decoration.b-1.b-2, h6.no-text-decoration.b-1.b-2{
+    text-decoration: none;
+    color: rgb(46, 46, 46);
+    border-bottom: 0;
+  }
+  p.no-text-decoration.b-1.b-2{
+    color: rgb(46, 46, 46);
+
+  }
+  .smaller{
+    float: right;
+  }
+}

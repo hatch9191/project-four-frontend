@@ -37,11 +37,11 @@ function ChatIndexModalComponent({ props, userData, userChats }) {
             userChats.map(chat => (
               (chat.userA.id === parseInt(userData.id) ?
                 <div key={chat.userB.id}>
-                  <Link to={`/profile/${userData.id}/chats/${chat.id}`}><p>{chat.userB.username}</p></Link>
+                  <Link to={`/profile/${userData.id}/chats/${chat.id}/`}><p>{chat.userB.username}</p></Link>
                 </div>
                 :
                 <div key={chat.userA.id}>
-                  <Link to={`/profile/${userData.id}/chats/${chat.id}`}><p>{chat.userA.username}</p></Link>
+                  <Link to={`/profile/${userData.id}/chats/${chat.id}/`}><p>{chat.userA.username}</p></Link>
                 </div>
               )
             ))

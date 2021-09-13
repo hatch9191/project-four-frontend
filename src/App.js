@@ -27,7 +27,6 @@ function App() {
       try {
         const res = await getAllPosts()
         setPosts(res.data)
-        console.log(res.data)
       } catch (err) {
         console.log(err)
       }
@@ -39,8 +38,8 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollTop />
-      <Navigation 
-        loggedIn={loggedIn} 
+      <Navigation
+        loggedIn={loggedIn}
         posts={posts}
       />
       <Switch>

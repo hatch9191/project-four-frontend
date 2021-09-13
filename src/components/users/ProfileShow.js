@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
-import { useLocation, useParams, Link, useHistory } from 'react-router-dom'
+import { Container, Button } from 'react-bootstrap'
+import { useLocation, useParams, useHistory } from 'react-router-dom'
 
 import Error from '../extras/Error'
 import Loading from '../extras/Loading'
@@ -132,7 +132,7 @@ function ProfileShow() {
 
   const FollowingModal = (props) => {
     return (
-      <FollowingModalComponent props={props} userData={userData} />
+      <FollowingModalComponent props={props} userData={userData} setModalFollowingShow={setModalFollowingShow} />
     )
   }
 
@@ -210,9 +210,11 @@ function ProfileShow() {
                     </>
                     :
                     <>
-                      {owner && <a className="normal-text cursor-pointer" onClick={() => setModalEditShow(true)}><i className="fas fa-pen pop-out p-2 mx-1"></i></a>}
-                      {owner && <Link to={`/profile/${userId}/chats`} className="normal-text cursor-pointer"><i className="fas fa-inbox pop-out p-2 mx-1"></i></Link>}
-                      {owner && <a className="normal-text cursor-pointer" onClick={() => setModalChatShow(true)}><i className="fas fa-inbox pop-out p-2 mx-1"></i></a>}
+                      {owner && <a className="normal-text cursor-pointer" onClick={() => setModalEditShow(true)}>
+                        {/* <i className="fas fa-pen pop-out p-2 mx-1"></i> */}
+                        <Button variant="dark" className="following-btn extra-width">Edit</Button></a>}
+                      {/* {owner && <Link to={`/profile/${userId}/chats`} className="normal-text cursor-pointer"><i className="fas fa-inbox pop-out p-2 mx-1"></i></Link>}
+                      {owner && <a className="normal-text cursor-pointer" onClick={() => setModalChatShow(true)}><i className="fas fa-inbox pop-out p-2 mx-1"></i></a>} */}
                     </>
                   }
                 </div>
@@ -245,7 +247,6 @@ function ProfileShow() {
           }
         </div>
       </Container>
-      {chatArray && console.log('chatarry', chatArray.length)}
     </>
   )
 }

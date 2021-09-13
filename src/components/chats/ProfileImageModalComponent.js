@@ -1,29 +1,44 @@
+
+
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { Modal } from 'react-bootstrap'
 
-function FollowersModalComponent({ props, userData }) {
+
+
+function ProfileImageModalComponent({ props, modalImage }) {
+
+  // const currentId = userData.id
+
   return (
+
     <Modal
       {...props}
       size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
+      aria-labelledby="contained-modal-title-vcenter "
       centered
       dialogClassName="custom-dialog"
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Followers
+        {console.log('modalImage', modalImage)}
+        <Modal.Title id="contained-modal-title-vcenter ">
+          Following
         </Modal.Title>
       </Modal.Header>
-      {userData && userData.followedBy.length < 1 && (
+
+
+      {/* {userData && userData.following.length < 1 && (
         <Modal.Body className="flex-row-center ">
-          <div className="my-4"><p >{userData.username} has no followers</p></div>
+          <div className="my-4"><p >{userData.username} is not following anyone</p></div>
         </Modal.Body>
-      )}
-      {userData && userData.followedBy.length > 0 && (
+      )} */}
+
+
+      {modalImage && (
+
         <Modal.Body className="p-0 scroll-height">
-          {userData.followedBy.map(follow => (
+          <img src={modalImage.profileImage}></img>
+          {/* {userData.following.map(follow => (
             <>
               <Link key={follow.id} className="normal-text flex-row-col-3 no-decoration hover-color" to={`/profile/${follow.id}/`}>
                 <div className="flex-center py-2 mx-2">
@@ -37,11 +52,12 @@ function FollowersModalComponent({ props, userData }) {
               </Link>
               <hr className="my-0" />
             </>
-          ))}
+          ))} */}
         </Modal.Body>
       )}
     </Modal>
+
   )
 }
 
-export default FollowersModalComponent
+export default ProfileImageModalComponent

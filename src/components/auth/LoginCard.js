@@ -32,6 +32,7 @@ function LoginCard({ setRegistered }) {
       const { data } = await loginUser(formData)
       setToken(data.token)
       history.push('/posts/')
+      location.reload()
     } catch (err) {
       setIsError(true)
     }
