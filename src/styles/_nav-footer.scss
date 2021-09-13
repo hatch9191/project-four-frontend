@@ -18,7 +18,10 @@
   }
   .search {
     border-radius: 20px;
-    background-color: whitesmoke;
+    &__option {
+      background-color: whitesmoke !important;
+    }
+    // background-color: whitesmoke !important;
     margin: 0 auto;
   }
   .drop-links {

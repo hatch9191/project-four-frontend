@@ -67,3 +67,13 @@ export function createAChat(userId) {
 export function createMessage(userId, chatId, formData) {
   return axios.post(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/messages/`, formData, headers())
 }
+
+//* comments
+
+export function createComment(postId, formData) {
+  return axios.post(`${baseUrl}/posts/${postId}/comments/`, formData, headers())
+}
+
+export function deleteComment(postId, commentId) {
+  return axios.delete(`${baseUrl}/posts/${postId}/comments/${commentId}/`, headers())
+}
