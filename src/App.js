@@ -39,7 +39,10 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollTop />
-      <Navigation loggedIn={loggedIn} />
+      <Navigation 
+        loggedIn={loggedIn} 
+        posts={posts}
+      />
       <Switch>
         <Route exact path="/" >
           <Home setLoggedIn={setLoggedIn} />

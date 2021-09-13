@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { removeToken, getPayLoad } from '../../lib/auth'
 import { getAllChatsUserIsIn } from '../../lib/api'
 
-function Navigation({ loggedIn }) {
+function Navigation({ loggedIn, posts }) {
 
   const history = useHistory()
   const userId = getPayLoad().sub
@@ -29,6 +29,7 @@ function Navigation({ loggedIn }) {
     removeToken()
     history.push('/')
   }
+  console.log(posts)
 
   const HandleDropDown = () => {
     if (!toggleDropdown) {
