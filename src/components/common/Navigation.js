@@ -139,9 +139,6 @@ function Navigation({ loggedIn }) {
                       <hr />
                     </>
                   )
-
-
-
                 ))
               )}
             </div>
