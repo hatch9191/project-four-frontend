@@ -212,7 +212,7 @@ function ProfileShow() {
                     <>
                       {owner && <a className="normal-text cursor-pointer" onClick={() => setModalEditShow(true)}>
                         {/* <i className="fas fa-pen pop-out p-2 mx-1"></i> */}
-                        <Button variant="dark" className="following-btn extra-width">Edit</Button></a>}
+                        <Button variant="dark" className="following-btn extra-width mt-2">Edit</Button></a>}
                       {/* {owner && <Link to={`/profile/${userId}/chats`} className="normal-text cursor-pointer"><i className="fas fa-inbox pop-out p-2 mx-1"></i></Link>}
                       {owner && <a className="normal-text cursor-pointer" onClick={() => setModalChatShow(true)}><i className="fas fa-inbox pop-out p-2 mx-1"></i></a>} */}
                     </>
