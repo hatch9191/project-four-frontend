@@ -31,7 +31,7 @@ function App() {
         const res = await getAllPosts()
         setPosts(res.data)
         setFilteredPosts(res.data)
-        console.log(res.data)
+        // console.log(res.data)
       } catch (err) {
         console.log(err)
       }

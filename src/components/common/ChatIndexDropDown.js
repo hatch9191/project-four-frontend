@@ -22,6 +22,26 @@ function ChatIndexDropDown({ setToggleDropdown }) {
     getData()
   }, [])
 
+  const filterByMostRecent = () => {
+    const filterChats = userChats.filter(chat => {
+      if (chat.messages.length > 0) {
+        return chat
+      }
+    })
+    return filterChats.sort((a, b) => {
+      a = a.messages.sort((c, d) => {
+        c = c.id
+        d = d.id
+        return d - c
+      })[0].id
+      b = b.messages.sort((e, f) => {
+        e = e.id
+        f = f.id
+        return f - e
+      })[0].id
+      return b - a
+    })
+  }
 
   ChatIndexDropDown.handleClickOutside = () => setToggleDropdown(false)
   return (
@@ -30,7 +50,7 @@ function ChatIndexDropDown({ setToggleDropdown }) {
       <hr />
       <div className="scroll-overflow">
         {userChats && (
-          userChats.map(chat => (
+          filterByMostRecent().map(chat => (
             chat.messages.length > 0 &&
             (chat.userA.id === parseInt(userId) ?
               <>
@@ -38,8 +58,24 @@ function ChatIndexDropDown({ setToggleDropdown }) {
                   <div className="flex-center">
                     <img className="chat-profile-image mx-2" src={chat.userB.profileImage} />
                   </div>
-                  <div className="flex-col-start mx-1">
-                    <p className="chat-line-elements no-decoration b-1 b-1 mb-0 mt-2"><strong>{chat.userB.username}</strong></p>
+                  <div className="flex-col-start mx-1 w-100">
+                    <div className="w-100">
+                      <p
+                        className="no-decoration b-1 mb-0 mt-2"
+                        onClick={() => setToggleDropdown(false)}
+                      >
+                        <strong>{chat.userB.username}</strong>
+                        <span className="float-right-2">
+                          {chat.messages.sort((a, b) => {
+                            a = a.id
+                            b = b.id
+                            return b - a
+                          })[0].createdAt.substr(11, 5)
+                          }
+                        </span>
+                      </p>
+                      {/* <p className="chat-line-elements no-decoration b-1 b-1 mb-0 mt-2"><strong>{chat.userB.username}</strong></p> */}
+                    </div>
                     <p style={{ textDecoration: 'none' }} className="no-decoration b-1">
                       {chat.messages.sort((a, b) => {
                         a = a.id
@@ -63,8 +99,23 @@ function ChatIndexDropDown({ setToggleDropdown }) {
                   <div className="flex-center">
                     <img className="chat-profile-image mx-2" src={chat.userA.profileImage} />
                   </div>
-                  <div className="flex-col-start mx-1">
-                    <p className="chat-line-elements no-decoration b-1 mb-0 mt-2" onClick={() => setToggleDropdown(false)} ><strong>{chat.userA.username}</strong></p>
+                  <div className="flex-col-start mx-1 w-100">
+                    <div className="w-100">
+                      <p
+                        className="no-decoration b-1 mb-0 mt-2"
+                        onClick={() => setToggleDropdown(false)}
+                      >
+                        <strong>{chat.userA.username}</strong>
+                        <span className="float-right-2">
+                          {chat.messages.sort((a, b) => {
+                            a = a.id
+                            b = b.id
+                            return b - a
+                          })[0].createdAt.substr(11, 5)
+                          }
+                        </span>
+                      </p>
+                    </div>
                     <p className="no-decoration b-1">
                       {chat.messages.sort((a, b) => {
                         a = a.id
@@ -76,7 +127,7 @@ function ChatIndexDropDown({ setToggleDropdown }) {
                         a = a.id
                         b = b.id
                         return b - a
-                      })[0].content.substr(0, 15)
+                      })[0].content.substr(0, 18)
                       }</p>
                   </div>
                 </Link>
