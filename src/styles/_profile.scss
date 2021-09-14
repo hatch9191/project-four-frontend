@@ -74,3 +74,20 @@ div.flex-row-start.b1{
   overflow: scroll;
   height: 370px;
 }
+
+.follow-circle {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 15px;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 2px 15px 2px;
+}
+
+div.flex{
+  display: flex;
+}
