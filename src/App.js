@@ -43,8 +43,8 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollTop />
-      <Navigation 
-        loggedIn={loggedIn} 
+      <Navigation
+        loggedIn={loggedIn}
         posts={posts}
         setPosts={setPosts}
         filteredPosts={filteredPosts}

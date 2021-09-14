@@ -61,14 +61,16 @@ function EditProfileModalComponent({ props, userData, setModalEditShow, setUserD
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      dialogClassName="custom-dialog"
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           Edit Profile
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className="flex-row-center">
-        <Form onSubmit={handleSubmit}>
+      <Modal.Body className="flex-row-center ">
+        <Form className="scroll-height-edit" onSubmit={handleSubmit}>
+
           <Form.Group>
             <ProfileImageUpload
               labelText="Profile Image"
@@ -77,6 +79,11 @@ function EditProfileModalComponent({ props, userData, setModalEditShow, setUserD
               onChange={handleImageUpload}
             />
           </Form.Group>
+
+
+
+
+
           <Form.Group className="mt-4">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -97,6 +104,13 @@ function EditProfileModalComponent({ props, userData, setModalEditShow, setUserD
               <a className="text-primary no-decoration">Learn More</a>
             </Form.Text>
           </Form.Group>
+
+
+
+
+
+
+
           <Form.Group className="mt-4">
             <Form.Label>First Name</Form.Label>
             <Form.Control
@@ -149,7 +163,7 @@ function EditProfileModalComponent({ props, userData, setModalEditShow, setUserD
             )}
           </Form.Group>
 
-          <Button className="mt-4 w-100" variant="info" type="submit">Submit</Button>
+          <Button variant="dark" className="my-3 w-100 following-btn" type="submit">Submit</Button>
         </Form>
 
       </Modal.Body>
