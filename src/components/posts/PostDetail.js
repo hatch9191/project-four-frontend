@@ -117,7 +117,7 @@ function PostDetail({ posts }) {
                     <Button variant="danger" className="save-button" onClick={handleSave}>Save</Button>
                   )}
                   {post.owner.id === user && (
-                    <Button variant="danger" className="save-button">Edit Post</Button>
+                    <Button as={Link} to={`/posts/${postId}/edit/`} variant="danger" className="save-button edit">Edit Post</Button>
                   )}
                 </div>
                 <div className="post-info">

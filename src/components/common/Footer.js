@@ -33,9 +33,9 @@ function Footer({ loggedIn }) {
         <div className="footer-popout-create">
           <p className="show-off">Show Off Your Art To Others</p>
           <hr />
-          <div>
-            <p className="create"><span>+</span> Create a Post</p>
-          </div>
+          <Link to="/posts/new/" className="create-link" onClick={openPostPopout}>
+            <p className="create" ><span>+</span> Create a Post</p>
+          </Link>
         </div>
       )}
       {termsOpen && (

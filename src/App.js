@@ -16,6 +16,8 @@ import ProfileShow from './components/users/ProfileShow'
 import PostDetail from './components/posts/PostDetail'
 import ChatsIndex from './components/chats/ChatsIndex'
 import ChatShow from './components/chats/ChatShow'
+import NewPost from './components/posts/NewPost'
+import EditPost from './components/posts/EditPost'
 
 function App() {
 
@@ -52,6 +54,10 @@ function App() {
         <Route exact path="/" >
           <Home setLoggedIn={setLoggedIn} />
         </Route>
+        <Route path="/posts/new/" >
+          <NewPost posts={posts} />
+        </Route>
+        <Route path="/posts/:postId/edit/" component={EditPost} />
         <Route path="/posts/:postId/" >
           <PostDetail posts={posts} />
         </Route>
@@ -60,7 +66,7 @@ function App() {
             filteredPosts={filteredPosts}
           />
         </Route> */}
-        <Route exact path="/posts/" >
+        <Route path="/posts/" >
           <Posts
             setLoggedIn={setLoggedIn}
             posts={posts}

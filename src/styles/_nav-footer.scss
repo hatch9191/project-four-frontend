@@ -83,6 +83,13 @@
     .show-off {
       padding-top: 8px;
     }
+    .create-link {
+      text-decoration: none;
+      color: #000;
+    }
+    .create-link:hover {
+      color: gray;
+    }
     .create {
       cursor: pointer;
       display: flex;
@@ -95,9 +102,6 @@
         font-size: xx-large;
         font-weight: 600;
       }
-    }
-    .create:hover {
-      color: gray;
     }
   }
   .footer-popout-terms {

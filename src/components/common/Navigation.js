@@ -6,7 +6,7 @@ import AsyncSelect from 'react-select/async'
 import { filterPosts } from '../../lib/api'
 import { removeToken } from '../../lib/auth'
 
-function Navigation({ loggedIn, filteredPosts, setFilteredPosts }) {
+function Navigation({ loggedIn, filteredPosts, posts, setPosts }) {
 
   const history = useHistory()
   const [query, setQuery] = React.useState('')
@@ -21,7 +21,7 @@ function Navigation({ loggedIn, filteredPosts, setFilteredPosts }) {
 
   const loadOptions = async () => {
     const res = await filterPosts(query)
-    setFilteredPosts(res.data)
+    setPosts(res.data)
     return res.data
   }
 
@@ -31,10 +31,16 @@ function Navigation({ loggedIn, filteredPosts, setFilteredPosts }) {
     } else if (!query) {
       history.push('/posts/')
     } else {
-      history.push(`/posts/search?=q${query}`)
+      history.push(`/posts/search?q=${query}`)
     }
   }
 
+  // const myRef = React.createRef()
+  // constructor(props) {
+  //   super(props)
+    
+  // }
+  
   console.log(filteredPosts)
 
   return (
@@ -55,17 +61,18 @@ function Navigation({ loggedIn, filteredPosts, setFilteredPosts }) {
             <Container>
               <Form onSubmit={handleSubmit}>
                 <AsyncSelect
-                  isMulti
                   placeholder="Search"
-                  // defaultOptions={posts}
-                  focusDefaultOption
+                  isClearable
+                  defaultOptions={posts}
                   loadOptions={loadOptions}
                   styles={styles}
                   onInputChange={(value) => setQuery(value)}
-                  // onChange={(value) => setQuery(value)}
-                  // ref={selectRef}
+                  onChange={(value) => setQuery(value)}
+                  // inputValue={(value) => set-value}
+                  // ref={myRef}
                   // onInputChange={(value) => {
-                  //   selectRef.current.select.getNextFocusedOption = () => false
+                  //   setQuery(value)
+                  //   myRef.current.select.getNextFocusedOption = () => false
                   // }}
                 />
               </Form>

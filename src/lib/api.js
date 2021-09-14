@@ -48,6 +48,14 @@ export function savePost(postId) {
   return axios.post(`${baseUrl}/posts/${postId}/save/`, null, headers())
 }
 
+export function createPost(formData) {
+  return axios.post(`${baseUrl}/posts/`, formData, headers())
+}
+
+export function editPost(postId, formData) {
+  return axios.put(`${baseUrl}/posts/${postId}/`, formData, headers())
+}
+
 //* chats
 
 export function getAllChatsUserIsIn(userId) {
