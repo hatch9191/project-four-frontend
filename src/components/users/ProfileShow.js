@@ -198,22 +198,23 @@ function ProfileShow() {
                   {canFollow ?
                     <>
                       {!following ? (
-                        <>
-                          <i onClick={handleFollow} className="fas fa-user-plus pop-out p-2 mx-1"></i>
-                          <i onClick={handeChatRequest} className="fas fa-comments pop-out p-2 mx-1"></i>
-                        </>
+                        <div className="flex">
+                          <i onClick={handleFollow} className="fas fa-user-plus pop-out p-2 mx-2 follow-circle"></i>
+                          <i onClick={handeChatRequest} className="fas fa-comments pop-out p-2 mx-2 follow-circle"></i>
+                        </div>
                       ) : (
-                        <>
-                          <i onClick={handleFollow} className="fas fa-user-times pop-out p-2 mx-1"></i>
-                          <i onClick={handeChatRequest} className="fas fa-comments pop-out p-2 mx-1"></i>
-                        </>
+                        <div className="flex">
+                          <i onClick={handleFollow} className="fas fa-user-times pop-out p-2 mx-2 follow-circle"></i>
+                          <i onClick={handeChatRequest} className="fas fa-comments pop-out p-2 mx-2 follow-circle"></i>
+                        </div>
                       )}
                     </>
                     :
                     <>
                       {owner && <a className="normal-text cursor-pointer" onClick={() => setModalEditShow(true)}>
-                        {/* <i className="fas fa-pen pop-out p-2 mx-1"></i> */}
-                        <Button variant="dark" className="following-btn extra-width mt-2">Edit</Button></a>}
+                        <i className="fas fa-pen pop-out p-2 mx-1 follow-circle"></i>
+                      </a>}
+                      {/* <Button variant="dark" className="following-btn extra-width mt-2">Edit</Button> */}
                       {/* {owner && <Link to={`/profile/${userId}/chats`} className="normal-text cursor-pointer"><i className="fas fa-inbox pop-out p-2 mx-1"></i></Link>}
                       {owner && <a className="normal-text cursor-pointer" onClick={() => setModalChatShow(true)}><i className="fas fa-inbox pop-out p-2 mx-1"></i></a>} */}
                     </>

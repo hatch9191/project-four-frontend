@@ -3,6 +3,9 @@ import { Form } from 'react-bootstrap'
 import { useParams, Link } from 'react-router-dom'
 import { createMessage, getSingleChat, getSingleUser } from '../../lib/api'
 import { getPayLoad } from '../../lib/auth'
+// import MessageDelete from './MessageDelete'
+import SideProfileInformation from './SideProfileInformation'
+import MessageBody from './MessageBody'
 
 function ChatShow() {
   const initialState = {
@@ -31,8 +34,6 @@ function ChatShow() {
     getData()
   }, [userId, chatId])
 
-
-
   React.useEffect(() => {
     const getData = async () => {
       try {
@@ -43,17 +44,7 @@ function ChatShow() {
       }
     }
     getData()
-  }, [])
-
-
-  const sortMessages = () => {
-    const sortedArr = chatData.messages.sort((a, b) => {
-      a = a.id
-      b = b.id
-      return b - a
-    })
-    return sortedArr
-  }
+  }, [currUser])
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -72,6 +63,7 @@ function ChatShow() {
     const updatedChat = await getSingleChat(userId, chatId)
     setChatData(updatedChat.data)
   }
+
 
   return (
     <>
@@ -100,29 +92,12 @@ function ChatShow() {
               }
             </div>
             <div className="message-col">
-              {chatData && (
-                sortMessages().map(message => (
-                  <div className={message.sender.id === currUser ? 'flex-row-start-2' : 'flex-row-start'} key={message.id}>
-                    <div className="flex-row-end">
-                      <img className="message-profile-image" src={message.sender.profileImage} alt="Profile Image" />
-                    </div>
-                    <div className="message-text mx-2">
-                      <p className="py-0 my-0"><strong>{message.sender.username}</strong></p>
-                      <p className="py-0 my-0 width-200">{message.content}</p>
-                      {console.log('message', message)}
-                      <small className="py-0 my-0 smaller">
-                        {message.createdAt[11]}
-                        {message.createdAt[12]}
-                        {message.createdAt[13]}
-                        {message.createdAt[14]}
-                        {message.createdAt[15]}
-                      </small>
-                    </div>
-                    <div>
-                    </div>
-                  </div>
-                ))
-              )}
+              <MessageBody
+                chatData={chatData}
+                currUser={currUser}
+                currentUserData={currentUserData}
+                setChatData={setChatData}
+              />
             </div>
             <div className="flex-row-full" >
               <img className="message-profile-image ml-2-img" src={currentUserData.profileImage} alt="Profile Image" />
@@ -138,38 +113,10 @@ function ChatShow() {
                     className="border-rounded"
                   />
                 </Form.Group>
-                {/* <Button variant="info" type="submit">Send</Button> */}
               </Form>
             </div>
           </div>
-          {currentUserData && (
-            <div className="flex-row-start-3 remove-from-view">
-              <div className="flex-row-4 mx-2">
-                <img clas src={currentUserData.profileImage} alt="Profile Image" className="message-profile-image-large" />
-                <strong className="my-0 py-0 px-2">{currentUserData.username}</strong>
-              </div>
-              <small
-                className="extra-small py-2 mx-2 grey-font-color"
-              >About•Help•API•Jobs•<br />
-                <Link className="text-decoration-none grey-font-color" to="/privacy" alt="Privacy">Privacy</Link>•
-                <Link className="text-decoration-none grey-font-color" to="/terms" alt="Terms">Terms</Link>•
-                <Link className="text-decoration-none grey-font-color" to="/cookies" alt="Cookies">Cookies</Link></small>
-              <small
-                className="extra-small mx-2 grey-font-color"
-              >© PAINTEREST FROM
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  className="text-decoration-none grey-font-color"
-                  href="https://github.com/hatch9191" alt="GitHub Harry"> HARRY</a> &
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  className="text-decoration-none grey-font-color"
-                  href="https://github.com/eoin-barr" alt="GitHub Eoin"> EOIN</a>
-              </small>
-            </div>
-          )}
+          <SideProfileInformation currentUserData={currentUserData} />
         </div>
       )}
     </>

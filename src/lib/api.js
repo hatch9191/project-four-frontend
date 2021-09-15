@@ -80,6 +80,10 @@ export function createMessage(userId, chatId, formData) {
   return axios.post(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/messages/`, formData, headers())
 }
 
+export function deleteMessage(userId, chatId, messageId) {
+  return axios.delete(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/messages/${messageId}/`, headers())
+}
+
 //* comments
 
 export function createComment(postId, formData) {
