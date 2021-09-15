@@ -1,18 +1,18 @@
 import React from 'react'
 import AsyncSelect from 'react-select/async'
 
-import { Navbar, Container, Form, FormControl, Nav } from 'react-bootstrap'
+import { Navbar, Container, Form, Nav } from 'react-bootstrap'
 import { filterPosts } from '../../lib/api'
 import { Link, useHistory } from 'react-router-dom'
 import { removeToken, getPayLoad } from '../../lib/auth'
 import { getAllChatsUserIsIn } from '../../lib/api'
 import ChatIndexDropDown from './ChatIndexDropDown'
-import $ from 'jquery'
+// import $ from 'jquery'
 
-function Navigation({ loggedIn, filteredPosts, posts, setPosts }) {
+function Navigation({ loggedIn, posts, setFilteredPosts }) {
 
   const history = useHistory()
-  const [query, setQuery] = React.useState('')
+  const [query, setQuery] = React.useState({})
   const styles = {
     control: styles => ({ ...styles, backgroundColor: 'whitesmoke', borderRadius: '20px' }),
   }
@@ -23,17 +23,16 @@ function Navigation({ loggedIn, filteredPosts, posts, setPosts }) {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const userId = await getPayLoad().sub
         const res = await getAllChatsUserIsIn(userId)
         setUserChats(res.data)
-        console.log(userChats)
       } catch (err) {
         console.log(err)
       }
     }
     getData()
-  }, [])
+  }, [userId])
 
+  console.log(userChats)
   // const nonparent = $('.message-icon-jq')
   // const position = nonparent.offset()
 
@@ -49,18 +48,22 @@ function Navigation({ loggedIn, filteredPosts, posts, setPosts }) {
 
   const loadOptions = async () => {
     const res = await filterPosts(query)
-    setPosts(res.data)
+    setFilteredPosts(res.data)
     return res.data
   }
 
   const handleSubmit = () => {
-    if (filteredPosts.length < 2) {
-      history.push(`/posts/${filteredPosts[0].id}/`)
-    } else if (!query) {
-      history.push('/posts/')
-    } else {
-      history.push(`/posts/search?q=${query}`)
-    }
+    // setQuery(query)
+    // if (query) {
+    // console.log('inside', query)
+    history.push(`/posts/${query.id}/`)
+    // window.history.replaceState(null, `/posts/${query.id}/`)
+    // }
+    // console.log('outside', query)
+    // history.push('/posts/')
+    // } else {
+    //   history.push(`/posts/search?q=${query}`)
+    // }
   }
 
   // const myRef = React.createRef()
@@ -68,8 +71,6 @@ function Navigation({ loggedIn, filteredPosts, posts, setPosts }) {
   //   super(props)
     
   // }
-
-  console.log(posts)
 
   const HandleDropDown = () => {
     if (!toggleDropdown) {
@@ -83,13 +84,13 @@ function Navigation({ loggedIn, filteredPosts, posts, setPosts }) {
   //   setToggleDropdown(false)
   // }
   
-  console.log(filteredPosts)
+  console.log('query', query)
 
   return (
     <div className="message-head" fluid>
       <Navbar className="navigation" fixed="top" expand="sm">
         <Container className="nav-layout">
-          <Navbar.Brand href="/" className="nav-logo">
+          <Navbar.Brand href={!loggedIn ? '/' : '/posts/'} className="nav-logo">
             <img
               alt="logo"
               src="https://res.cloudinary.com/dn11uqgux/image/upload/v1631312231/sei_project_3_studio_images/icons8-modern-art-96_iiqscv.png"
@@ -111,6 +112,7 @@ function Navigation({ loggedIn, filteredPosts, posts, setPosts }) {
                     styles={styles}
                     onInputChange={(value) => setQuery(value)}
                     onChange={(value) => setQuery(value)}
+                    value={query}
                     // inputValue={(value) => set-value}
                     // ref={myRef}
                     // onInputChange={(value) => {

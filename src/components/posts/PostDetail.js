@@ -66,40 +66,9 @@ function PostDetail({ posts }) {
   }
 
 
-
-  function timeSince(date) {
-
-    var seconds = Math.floor((new Date() - date) / 1000)
-  
-    var interval = seconds / 31536000
-  
-    if (interval > 1) {
-      return Math.floor(interval) + ' years'
-    }
-    interval = seconds / 2592000
-    if (interval > 1) {
-      return Math.floor(interval) + ' months'
-    }
-    interval = seconds / 86400
-    if (interval > 1) {
-      return Math.floor(interval) + ' days'
-    }
-    interval = seconds / 3600
-    if (interval > 1) {
-      return Math.floor(interval) + ' hours'
-    }
-    interval = seconds / 60
-    if (interval > 1) {
-      return Math.floor(interval) + ' minutes'
-    }
-    return Math.floor(seconds) + ' seconds'
-  }
-  var aDay = 24 * 60 * 60 * 1000
-  // console.log(timeSince(new Date(Date.now() - aDay)))
-
   return (
     <>
-      <Container className="detail-page">
+      <Container className="detail-page" fluid>
         {isError && <div className="px-4 py-5 text-center"><Error /></div>}
         {isLoading && <div className="px-4 py-5 text-center"><Loading /></div>}
         {post && (
@@ -151,17 +120,30 @@ function PostDetail({ posts }) {
                       <div className="comment-show" key={comment.id}>
                         <img className="user-images" src={comment.owner.profileImage} />
                         <div className="comment-text">
-                          <div>
-                            <p><Link className="owner-link" to={`/profile/${comment.owner.id}/`}>{comment.owner.username}</Link> <span className="time-ago">{timeSince(new Date(Date.now() - aDay))} ago</span></p>
+                          <div >
+                            <p><Link className="owner-link" to={`/profile/${comment.owner.id}/`}>{comment.owner.username}</Link> <span className="time-ago">
+                              {comment.createdAt[8]}
+                              {comment.createdAt[9]}
+                              /{comment.createdAt[5]}
+                              {comment.createdAt[6]} 
+                              {' '}@{' '}
+                              {comment.createdAt[11]}
+                              {Number(comment.createdAt[12]) + 1}
+                              {comment.createdAt[13]}
+                              {comment.createdAt[14]}
+                              {comment.createdAt[15]}</span></p>
                             <p>{comment.text}</p>
                           </div>
                           {comment.owner.id === user && (
-                            <CommentDelete 
-                              postId={postId} 
-                              comment={comment} 
-                              setPost={setPost} 
-                              setIsError={setIsError} 
-                            />
+                            <div className="bin">
+                              <CommentDelete 
+                                postId={postId} 
+                                comment={comment} 
+                                setPost={setPost} 
+                                setIsError={setIsError} 
+                              />
+                            </div>
+                            
                           )}
                         </div>
                       </div>

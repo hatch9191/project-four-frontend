@@ -71,6 +71,15 @@ div.flex-row-start.b1{
 }
 
 .scroll-height-edit{
-  overflow: scroll;
+  overflow-y: scroll;
   height: 370px;
+}
+
+.profile-saved-added {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-container {
+  margin-top: 100px;
 }

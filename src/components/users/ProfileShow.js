@@ -10,6 +10,7 @@ import EditProfileModalComponent from './EditProfileModalComponent'
 import ChatIndexModalComponent from './ChatIndexModalComponent'
 import { checkForExistingChat, createAChat, followToggle, getSingleUser, getAllChatsUserIsIn } from '../../lib/api'
 import { getPayLoad, isOwner, isAuthenticated } from '../../lib/auth'
+import StandardPostCard from '../posts/StandardPostCard'
 
 function ProfileShow() {
   const { userId } = useParams()
@@ -164,12 +165,12 @@ function ProfileShow() {
 
   return (
     <>
-      <Container fluid className="pt-4 mt-4">
+      <Container fluid className="pt-4 mt-4 ">
         <div>
           {loading && <Loading />}
           {isError && <Error />}
           {userData && (
-            <div className="flex-col-center">
+            <div className="flex-col-center profile-container">
               <div className="pt-4"></div>
               {userData.profileImage && <div><img src={userData.profileImage} className="profile-image"></img></div>}
               {userData.firstName && userData.lastName && <h2 className="pt-2"><strong>{userData.firstName} {userData.lastName}</strong></h2>}
@@ -228,24 +229,18 @@ function ProfileShow() {
           <a onClick={handleShowSavedPosts}><p className={`cursor-pointer px-3 pt-1 ${savedPosts ? 'bordertop' : ''}`}>Posts Saved</p></a>
           <a onClick={handleShowCreatedPosts}><p className={`cursor-pointer px-3 pt-1 ${createdPosts ? 'bordertop' : ''}`}>Posts Added</p></a>
         </div>
-        <div>
-          {userData && !createdPosts && userData.savedPosts.length < 1 && (
-            <div><p className="mt-2">{userData.username} has not saved any posts</p></div>
-          )}
-          {userData && savedPosts &&
-            userData.savedPosts.map(post => (
-              <div key={post.id}><p>{post.title}</p></div>
-            ))
-          }
-          {userData && !savedPosts && userData.createdPosts.length < 1 && (
-            <div><p className="mt-2">{userData.username} has not created any posts</p></div>
-          )}
-          {userData && createdPosts &&
-            userData.createdPosts.map(post => (
-              <div key={post.id}><p>{post.title}</p></div>
-            ))
-          }
-        </div>
+      </Container>
+      <Container className="posts-body profile-posts" >
+        {userData && !createdPosts && userData.savedPosts.length < 1 && (
+          <div><p className="mt-2">{userData.username} has not saved any posts</p></div>
+        )}
+        {userData && savedPosts &&
+          userData.savedPosts.map(post => <StandardPostCard post={post} key={post.id} />)}
+        {userData && !savedPosts && userData.createdPosts.length < 1 && (
+          <div><p className="mt-2">{userData.username} has not created any posts</p></div>
+        )}
+        {userData && createdPosts && 
+          userData.createdPosts.map(post => <StandardPostCard post={post} key={post.id} />)}
       </Container>
     </>
   )

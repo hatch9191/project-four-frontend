@@ -11,14 +11,19 @@
   // flex-wrap: wrap;
   // text-align: center;
   height: 100%;
-  // width: 100%;
+  width: 100%;
   // max-width: 100vw;
+  
 }
 
 .postcard {
   width: 14rem;
   border: none;
-  margin: 10px; 
+  margin: 10px;
+  display: inline-block;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
   .post-image {
     border-radius: 25px;
   }
@@ -38,17 +43,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: inset 0px -15px 15px 10px #ffffff, inset 10px 15px 15px 10px #ffffff;
+  background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1631624855/sei_project_3_studio_images/Screenshot_2021-09-14_at_14.06.50_ae5fao.png');
 }
 
 .detail-card {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  margin: 20px 15px;
   background-color: white;
   width: 1000px;
-  height: 700px;
+  height: fit-content;
   min-height: 700px;
   border-radius: 25px;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
@@ -57,6 +63,7 @@
     width: 45%;
     height: 95%;
     max-height: 660px;
+    margin-top: 15px;
     img {
       width: 100%;
       max-height: 100%;
@@ -74,7 +81,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    margin-top: 15px;
     height: 95%;
     .detail-text {
       h4 {
@@ -142,10 +149,12 @@
       }
       .comments-map {
         overflow-y: scroll;
+        display: flex;
+        flex-direction: column-reverse;
         // height: 100%;
         margin-bottom: 5px;
         flex-grow: 3;
-        max-height: 250px;
+        max-height: 350px;
         min-height: 200px;
       }
       .comment-show {
@@ -157,14 +166,19 @@
           align-items: center;
           justify-content: space-evenly;
           border: rgb(218, 218, 218) 1px solid;
-          margin: 0 15px;
+          margin: -5px 15px;
           border-radius: 15px;
-          padding: 5px 20px 5px 5px;
+          padding: 5px 30px 5px 5px;
+          // min-width: 150px;
           .delete-bin:hover{
             cursor: pointer;
           }
+          .bin {
+            margin-left: 20px;
+          }
           .time-ago {
             color: #757e88;
+            font-size: small;
           }
           p {
             margin: 0;
@@ -270,16 +284,15 @@
     columns: 4 auto;
   }
 }
-@media only screen and (max-width: 935px) {
+@media only screen and (max-width: 945px) {
   .posts-body {
     columns: 3 auto;
   }
 }
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 760px) {
   .detail-card { 
     flex-direction: column;
     justify-content: center;
-    height: 1200px;
     .top-line {
       margin-top: 10px;
     }
@@ -296,7 +309,11 @@
     }
   }
 }
-
+@media only screen and (max-width: 745px) {
+  .detail-image, .detail-text {
+    margin-left: 25px;
+  }
+}
 @media only screen and (max-width: 705px) {
   .posts-body {
     columns: 2 auto;
@@ -310,6 +327,9 @@
     flex-direction: column;
     align-items: center;
     columns: 1 auto;
+  }
+  .profile-posts {
+    margin-top: -10px;
   }
   .create-page {
     margin-top: 60px;
