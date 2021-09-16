@@ -1,9 +1,20 @@
-import { getSinglePost } from '../../../lib/api'
+import React from 'react'
 
+import { getSinglePost } from '../../../lib/api'
 import { deleteComment } from '../../../lib/api'
 
 function CommentDelete({ postId, comment, setPost, setIsError }) {
   
+  const [toggleDelete, setToggleDelete] = React.useState(false)
+
+  const preDelete = () => {
+    if (!toggleDelete) {
+      setToggleDelete(true)
+    } else {
+      setToggleDelete(false)
+    }
+  }
+
   const handleDelete = async () => {
     try {
       const res = await deleteComment(postId, comment.id)
@@ -17,7 +28,14 @@ function CommentDelete({ postId, comment, setPost, setIsError }) {
   }
   
   return (
-    <i className="fas fa-trash-alt delete-bin" title="Delete comment" onClick={handleDelete}></i>
+    <>
+      {!toggleDelete && (
+        <span onClick={preDelete} className="delete-bin options" title="Options">⋮</span>
+      )}
+      {toggleDelete && (
+        <i className="fas fa-trash-alt delete-bin delete-colour" title="Delete comment" onClick={handleDelete}></i>
+      )}
+    </>
   )
 }
 
