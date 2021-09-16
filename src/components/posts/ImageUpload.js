@@ -20,34 +20,33 @@ function ImageUpload({ onChange, name, value }) {
 
   return (
     <>
-      <label>Image Upload</label>
+      {/* <label>Image Upload</label> */}
       <div className="image-upload">
         {isUploading &&
           <p>Uploading image....</p>
         }
         {value && (
-          <div style={{ width: '200px' }}>
+          <div>
             <img
               src={value}
               alt="selected"
-              style={{ width: '100%', height: 'auto' }}
+              style={{ width: '190px', height: 'auto', borderRadius: '25px' }}
             />
-            {!isUploading &&
+            {/* {!isUploading &&
             <p>Image Uploaded!</p>
-            }
+            } */}
           </div>
         )}
         {!isUploading && (
-          <div className="file-select"
-            style={{ marginTop: 10 }}>
-            <label>
-              <input
-                
-                type="file"
-                name={name}
-                onChange={handleUpload}
-              />
-            </label>
+          <div style={{ marginTop: '10px', width: '100%', display: 'flex' }}>
+            <input
+              type="file"
+              id="files"
+              className="hidden"
+              name={name}
+              onChange={handleUpload}
+            />
+            <label className="upload-btn" htmlFor="files">Upload Image</label>
           </div>
         )}
       </div>

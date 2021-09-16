@@ -19,9 +19,31 @@ function NewPost({ posts }) {
   const [formData, setFormData] = React.useState(initialState)
   const [formErrors, setFormErrors] = React.useState(initialState)
   const history = useHistory()
-  // const [movements, setMovements] = React.useState(null)
-  // setMovements(posts.map(post => post.movement))
   let a = 1
+
+  const options = [
+    { label: 'Ukiyo-e', value: 'Ukiyo-e' },
+    { label: 'Surrealism', value: 'Surrealism' },
+    { label: 'Street', value: 'Street' },
+    { label: 'Romanticism', value: 'Romanticism' },
+    { label: 'Renaissance', value: 'Renaissance' },
+    { label: 'Primitivism', value: 'Primitivism' },
+    { label: 'Postcolonial', value: 'Postcolonial' },
+    { label: 'Post-Modernism', value: 'Post-Modernism' },
+    { label: 'Post-Impressionism', value: 'Post-Impressionism' },
+    { label: 'Pop Art', value: 'Pop Art' },
+    { label: 'Neo-Impressionism', value: 'Neo-Impressionism' },
+    { label: 'Modernism', value: 'Modernism' },
+    { label: 'Modern', value: 'Modern' },
+    { label: 'Expressive Abstractionism', value: 'Expressive Abstractionism' },
+    { label: 'Dutch Golden Age', value: 'Dutch Golden Age' },
+    { label: 'Cubism', value: 'Cubism' },
+    { label: 'Contemporary', value: 'Contemporary' },
+    { label: 'Art Nouveau', value: 'Art Nouveau' },
+    { label: 'Abstract Expressionism', value: 'Abstract Expressionism' },
+    { label: 'Abstract', value: 'Abstract' }
+  ]
+
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -83,9 +105,9 @@ function NewPost({ posts }) {
                     as="select"
                     name="movement"
                     onChange={handleChange}>
-                    <option value="" disabled selected>Select Style/ Movement</option>
-                    {posts.map(post => (
-                      <option key={a += 1} value={post.movement}>{post.movement}</option>
+                    <option value="" disabled selected>Select Style/Movement</option>
+                    {options.map(post => (
+                      <option key={a += 1} value={post.value}>{post.label}</option>
                     ))}
                   </Form.Control>
                 </Form.Group>
