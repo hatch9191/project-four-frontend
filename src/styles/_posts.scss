@@ -85,7 +85,6 @@
     flex-direction: column;
     justify-content: space-between;
     margin-top: 15px;
-    height: 95%;
     .detail-text {
       h4 {
         box-shadow: 0px 8px 15px 10px #ffffff;
@@ -173,13 +172,17 @@
           margin: -5px 15px;
           border-radius: 15px;
           padding: 5px 30px 5px 5px;
-          
-          // min-width: 150px;
+          .bin-buttons {
+            display: flex;
+            align-items: center;
+          }
           .options {
             font-size: x-large;
+            margin-left: 10px;
           }
           .delete-colour {
             color: #d62a3b;
+            padding-top: -5px;
           }
           .delete-bin:hover{
             cursor: pointer;
@@ -249,10 +252,22 @@
   h4 {
     text-align: center;
   }
+  .upload-btn {
+    color: #212529;
+    border: 1px #ced4da solid;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+  }
   .image-upload {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin: 10px 0;
+    width: 100%;
   }
   .file-select {
     margin: 3px;

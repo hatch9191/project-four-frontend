@@ -28,14 +28,15 @@ function CommentDelete({ postId, comment, setPost, setIsError }) {
   }
   
   return (
-    <>
-      {!toggleDelete && (
-        <span onClick={preDelete} className="delete-bin options" title="Options">⋮</span>
-      )}
+    <div className="bin-buttons">
+      {/* {!toggleDelete && ( */}
+      
+      {/* )} */}
       {toggleDelete && (
         <i className="fas fa-trash-alt delete-bin delete-colour" title="Delete comment" onClick={handleDelete}></i>
       )}
-    </>
+      <span onClick={preDelete} className="delete-bin options" title="Options">⋮</span>
+    </div>
   )
 }
 
