@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom'
 import { getPayLoad } from '../../lib/auth'
 import { getAllChatsUserIsIn } from '../../lib/api'
 import onClickOutside from 'react-onclickoutside'
+import Loading from '../extras/Loading'
 
 function ChatIndexDropDown({ setToggleDropdown }) {
 
   const userId = getPayLoad().sub
   const [userChats, setUserChats] = React.useState(null)
+
+  // const [test, setTest] = React.useState(null)
 
   React.useEffect(() => {
     const getData = async () => {
@@ -49,6 +52,9 @@ function ChatIndexDropDown({ setToggleDropdown }) {
       <p className="show-off-message mx-2">Messages</p>
       <hr />
       <div className="scroll-overflow">
+        {!userChats && <Loading />}
+        {userChats && console.log('filterByMostChats', filterByMostRecent())}
+        {userChats && userChats.length < 1 && <div className="flex-div-center"><p className="my-4">No Chats</p></div>}
         {userChats && (
           filterByMostRecent().map(chat => (
             chat.messages.length > 0 &&
@@ -76,19 +82,51 @@ function ChatIndexDropDown({ setToggleDropdown }) {
                       </p>
                       {/* <p className="chat-line-elements no-decoration b-1 b-1 mb-0 mt-2"><strong>{chat.userB.username}</strong></p> */}
                     </div>
-                    <p style={{ textDecoration: 'none' }} className="no-decoration b-1">
-                      {chat.messages.sort((a, b) => {
-                        a = a.id
-                        b = b.id
-                        return b - a
-                      })[0].sender.username
-                      }:&nbsp;
-                      {chat.messages.sort((a, b) => {
-                        a = a.id
-                        b = b.id
-                        return b - a
-                      })[0].content.substr(0, 15)
-                      }</p>
+                    <div className="w-100">
+
+                      <p style={{ textDecoration: 'none' }} className="no-decoration b-1">
+                        {chat.messages.sort((a, b) => {
+                          a = a.id
+                          b = b.id
+                          return b - a
+                        })[0].sender.username
+                        }:&nbsp;
+                        {chat.messages.sort((a, b) => {
+                          a = a.id
+                          b = b.id
+                          return b - a
+                        })[0].content.substr(0, 15)
+                        }
+
+
+
+
+
+
+                        <span className={
+                          (chat.messages.sort((a, b) => {
+                            a = a.id
+                            b = b.id
+                            return b - a
+                          })[0].sender.id !== parseInt(userId))
+                            &&
+                            (chat.messages.sort((a, b) => {
+                              a = a.id
+                              b = b.id
+                              return b - a
+                            })[0].isRead === false)
+                            ?
+                            'float-right-2 green-notification'
+                            :
+                            'no-new-messages'
+                        }></span>
+
+
+
+
+
+                      </p>
+                    </div>
                   </div>
                 </Link>
                 <hr />
@@ -116,19 +154,48 @@ function ChatIndexDropDown({ setToggleDropdown }) {
                         </span>
                       </p>
                     </div>
-                    <p className="no-decoration b-1">
-                      {chat.messages.sort((a, b) => {
-                        a = a.id
-                        b = b.id
-                        return b - a
-                      })[0].sender.username
-                      }:&nbsp;
-                      {chat.messages.sort((a, b) => {
-                        a = a.id
-                        b = b.id
-                        return b - a
-                      })[0].content.substr(0, 18)
-                      }</p>
+                    <div className="w-100">
+                      <p className="no-decoration b-1">
+                        {chat.messages.sort((a, b) => {
+                          a = a.id
+                          b = b.id
+                          return b - a
+                        })[0].sender.username
+                        }:&nbsp;
+                        {chat.messages.sort((a, b) => {
+                          a = a.id
+                          b = b.id
+                          return b - a
+                        })[0].content.substr(0, 18)
+                        }
+
+
+
+                        <span className={
+                          (chat.messages.sort((a, b) => {
+                            a = a.id
+                            b = b.id
+                            return b - a
+                          })[0].sender.id !== parseInt(userId))
+                            &&
+                            (chat.messages.sort((a, b) => {
+                              a = a.id
+                              b = b.id
+                              return b - a
+                            })[0].isRead === false)
+                            ?
+                            'float-right-2 green-notification'
+                            :
+                            'no-new-messages'
+                        }></span>
+
+
+
+
+
+                      </p>
+                    </div>
+
                   </div>
                 </Link>
                 <hr />

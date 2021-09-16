@@ -84,6 +84,14 @@ export function deleteMessage(userId, chatId, messageId) {
   return axios.delete(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/messages/${messageId}/`, headers())
 }
 
+export function editMessage(userId, chatId, messageId, formData) {
+  return axios.put(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/messages/${messageId}/edit/`, formData, headers())
+}
+
+// export function editMessage(userId, chatId, formData) {
+//   return axios.put(`${baseUrl}/auth/profile/${userId}/chats/${chatId}/edit/`, formData, headers())
+// }
+
 //* comments
 
 export function createComment(postId, formData) {

@@ -69,7 +69,7 @@ function Navigation({ loggedIn, posts, setFilteredPosts }) {
   // const myRef = React.createRef()
   // constructor(props) {
   //   super(props)
-    
+
   // }
 
   const HandleDropDown = () => {
@@ -83,22 +83,22 @@ function Navigation({ loggedIn, posts, setFilteredPosts }) {
   // const handleChatShow = () => {
   //   setToggleDropdown(false)
   // }
-  
+
   console.log('query', query)
 
   return (
     <div className="message-head" fluid>
       <Navbar className="navigation" fixed="top" expand="sm">
         <Container className="nav-layout">
-          <Navbar.Brand href={!loggedIn ? '/' : '/posts/'} className="nav-logo">
+          <Navbar.Brand href={!loggedIn ? '/' : '/posts/'} className="nav-logo no-bg-change">
             <img
               alt="logo"
-              src="https://res.cloudinary.com/dn11uqgux/image/upload/v1631312231/sei_project_3_studio_images/icons8-modern-art-96_iiqscv.png"
+              src="https://res.cloudinary.com/dk0r9bcxy/image/upload/v1631747952/project-4/Pinterest-logo_bj0rem.png"
               width="30"
               height="30"
-              className="d-inline-block align-top"
+              className="d-inline-block align-top "
             />
-          Painterest
+            Painterest
           </Navbar.Brand>
           {loggedIn && (
             <>
@@ -113,12 +113,12 @@ function Navigation({ loggedIn, posts, setFilteredPosts }) {
                     onInputChange={(value) => setQuery(value)}
                     onChange={(value) => setQuery(value)}
                     value={query}
-                    // inputValue={(value) => set-value}
-                    // ref={myRef}
-                    // onInputChange={(value) => {
-                    //   setQuery(value)
-                    //   myRef.current.select.getNextFocusedOption = () => false
-                    // }}
+                  // inputValue={(value) => set-value}
+                  // ref={myRef}
+                  // onInputChange={(value) => {
+                  //   setQuery(value)
+                  //   myRef.current.select.getNextFocusedOption = () => false
+                  // }}
                   />
                 </Form>
               </Container>

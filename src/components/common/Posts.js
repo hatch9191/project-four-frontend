@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap'
 
 import StandardPostCard from '../posts/StandardPostCard'
 import { isAuthenticated } from '../../lib/auth'
+import Loading from '../extras/Loading'
 
 function Posts({ setLoggedIn, posts }) {
 

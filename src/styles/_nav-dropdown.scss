@@ -78,6 +78,11 @@ p.no-decoration.b-1{
   background-color: rgb(233, 232, 232);
 }
 
+.flex-div-center{
+  display: flex;
+  justify-content: center;
+}
+
 .scroll-overflow{
   overflow: scroll;
     height: 362px;
@@ -93,12 +98,32 @@ p.no-decoration.b-1{
   margin-right: 10px;
 }
 
+.float-right-3{
+  float: right;
+}
+
+.green-notification{
+  margin-top: 5px;
+  height: 15px;
+  width: 15px;
+  background-color: #dc3545;
+  border-radius: 50%;
+}
+
+.no-new-messages{
+  display: none;
+}
+
 @media only screen and (max-width: 2460px) {
 .message-head {
   div.message-popout-create {
     right: 650px;
     }
   }
+}
+
+a.nav-logo.no-bg-change:hover{
+  background-color: white;
 }
 
 @media only screen and (max-width: 2350px) {
