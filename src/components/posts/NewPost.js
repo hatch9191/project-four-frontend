@@ -83,10 +83,10 @@ function NewPost({ posts }) {
                     as="select"
                     name="movement"
                     onChange={handleChange}>
-                    <option value="" disabled selected>Select your option</option>
-                    {posts.map(post => ( 
+                    <option value="" disabled selected>Select Style/ Movement</option>
+                    {posts.map(post => (
                       <option key={a += 1} value={post.movement}>{post.movement}</option>
-                    ))}    
+                    ))}
                   </Form.Control>
                 </Form.Group>
                 <Form.Group className="mb-3">
@@ -118,7 +118,7 @@ function NewPost({ posts }) {
           </Container>
         </>
       )}
-      
+
     </>
   )
 }
