@@ -13,6 +13,11 @@ function Posts({ setLoggedIn, posts }) {
 
   return (
     <>
+      {!posts && (
+        <div className="flex-div-center-2 py-4 my-4">
+          <Loading />
+        </div>
+      )}
       <Container className="posts-body" >
         {posts && posts.map(post => <StandardPostCard post={post} key={post.id} />)}
       </Container>

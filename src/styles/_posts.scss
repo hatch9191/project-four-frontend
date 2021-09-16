@@ -287,6 +287,11 @@
   }
 }
 
+.flex-div-center-2{
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 1395px) {
   .posts-body {
     columns: 5 auto;
