@@ -7,20 +7,22 @@ import ImageUpload from '../posts/ImageUpload'
 import Error from '../extras/Error'
 import Loading from '../extras/Loading'
 
-function EditPost() {
+function EditPost({ posts }) {
 
   const initialState = {
     title: '',
     description: '',
     image: '',
+    movement: '',
   }
 
   const [formData, setFormData] = React.useState(initialState)
   const [formErrors, setFormErrors] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
-  const isLoading = !formData && !isError
+  const isLoading = !formData && !posts && !isError
   const { postId } = useParams()
   const history = useHistory()
+  let a = 0
 
   React.useEffect(() => {
     const getData = async () => {
@@ -61,7 +63,7 @@ function EditPost() {
         <div className="create-card edit-card">
           {isError && <div className="px-4 py-5 text-center"><Error /></div>}
           {isLoading && <div className="px-4 py-5 text-center"><Loading /></div>}
-          {!isError && (
+          {!isError && posts && (
             <Form onSubmit={handleSubmit}>
               <h4>Edit Post</h4>
               <Form.Group className="mb-3">
@@ -80,7 +82,7 @@ function EditPost() {
               <Form.Group className="mb-3">
                 {/* <Form.Label>Description</Form.Label> */}
                 <Form.Control
-                  type="text"
+                  as="textarea"
                   placeholder="Enter Description"
                   name="description"
                   value={formData.description}
@@ -89,6 +91,18 @@ function EditPost() {
                 {formErrors.description && (
                   <Form.Text className="text-muted">{formErrors.description}</Form.Text>
                 )}
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Control
+                  as="select"
+                  name="movement"
+                  value={formData.movement}
+                  onChange={handleChange}>
+                  <option value="" disabled selected>Select your option</option>
+                  {posts.map(post => ( 
+                    <option key={a += 1} value={post.movement}>{post.movement}</option>
+                  ))}    
+                </Form.Control>
               </Form.Group>
               <Form.Group className="mb-3 image-upload">
                 <ImageUpload

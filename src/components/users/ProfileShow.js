@@ -230,16 +230,16 @@ function ProfileShow() {
           <a onClick={handleShowSavedPosts}><p className={`cursor-pointer px-3 pt-1 ${savedPosts ? 'bordertop' : ''}`}>Posts Saved</p></a>
           <a onClick={handleShowCreatedPosts}><p className={`cursor-pointer px-3 pt-1 ${createdPosts ? 'bordertop' : ''}`}>Posts Added</p></a>
         </div>
+        {userData && !createdPosts && userData.savedPosts.length < 1 && (
+          <div><p className="mt-2 text-center">{userData.username} has not saved any posts</p></div>
+        )}
+        {userData && !savedPosts && userData.createdPosts.length < 1 && (
+          <div><p className="mt-2 text-center">{userData.username} has not created any posts</p></div>
+        )}
       </Container>
       <Container className="posts-body profile-posts" >
-        {userData && !createdPosts && userData.savedPosts.length < 1 && (
-          <div><p className="mt-2">{userData.username} has not saved any posts</p></div>
-        )}
         {userData && savedPosts &&
           userData.savedPosts.map(post => <StandardPostCard post={post} key={post.id} />)}
-        {userData && !savedPosts && userData.createdPosts.length < 1 && (
-          <div><p className="mt-2">{userData.username} has not created any posts</p></div>
-        )}
         {userData && createdPosts && 
           userData.createdPosts.map(post => <StandardPostCard post={post} key={post.id} />)}
       </Container>

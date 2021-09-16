@@ -84,7 +84,7 @@ function Navigation({ loggedIn, posts, setFilteredPosts }) {
   //   setToggleDropdown(false)
   // }
   
-  console.log('query', query)
+  // console.log('query', query)
 
   return (
     <div className="message-head" fluid>

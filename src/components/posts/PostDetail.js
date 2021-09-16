@@ -18,17 +18,15 @@ function PostDetail({ posts }) {
   const [userData, setUserData] = React.useState(null)
   const [post, setPost] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
-  const isLoading = !post && !isError
+  const isLoading = !post && !posts && !isError
 
   React.useEffect(() => {
     const getPostData = async () => {
       try {
         const userRes = await getSingleUser(user)
         setUserData(userRes.data)
-        console.log('USER', userRes.data)
         const postRes = await getSinglePost(postId)
         setPost(postRes.data)
-        console.log('POST', postRes.data)
       } catch (err) {
         console.log(err)
         setIsError(true)
@@ -65,6 +63,11 @@ function PostDetail({ posts }) {
     }
   }
 
+  const sortMessages = () => {
+    return post.comments.sort((a, b) => b.id - a.id)
+  }
+
+  console.log('post', post)
 
   return (
     <>
@@ -116,7 +119,7 @@ function PostDetail({ posts }) {
                 <div className="comments-area">
                   <h4>Comments</h4>
                   <div className="comments-map">
-                    {post.comments.map(comment => (
+                    {post.comments && sortMessages().map(comment => (
                       <div className="comment-show" key={comment.id}>
                         <img className="user-images" src={comment.owner.profileImage} />
                         <div className="comment-text">
@@ -161,7 +164,8 @@ function PostDetail({ posts }) {
         <h4>More Like This</h4>
       </Container>
       <Container className="posts-body related" >
-        {posts && posts.map(post => <StandardPostCard post={post} key={post.id} />)}
+        {isLoading && <div className="px-4 py-5 text-center"><Loading /></div>}
+        {post && posts && posts.filter(item => item.movement === post.movement).map(post => <StandardPostCard post={post} key={post.id} />)}
       </Container>
     </>
   )

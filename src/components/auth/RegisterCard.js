@@ -11,6 +11,7 @@ function RegisterCard({ registered, setRegistered }) {
     email: '',
     password: '',
     passwordConfirmation: '',
+    profileImage: 'https://res.cloudinary.com/dn11uqgux/image/upload/v1631736676/sei_project_3_studio_images/Screenshot_2021-09-15_at_21.09.58_vd6hdq.png',
     acceptTerms: null,
   }
 

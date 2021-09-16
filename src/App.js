@@ -57,7 +57,9 @@ function App() {
         <Route path="/posts/new/" >
           <NewPost posts={posts} />
         </Route>
-        <Route path="/posts/:postId/edit/" component={EditPost} />
+        <Route path="/posts/:postId/edit/" >
+          <EditPost posts={posts} />
+        </Route>
         <Route path="/posts/:postId/" >
           <PostDetail posts={posts} />
         </Route>
