@@ -95,14 +95,8 @@ function ChatIndexDropDown({ setToggleDropdown }) {
                           a = a.id
                           b = b.id
                           return b - a
-                        })[0].content.substr(0, 15)
+                        })[0].content.substr(0, 14)
                         }
-
-
-
-
-
-
                         <span className={
                           (chat.messages.sort((a, b) => {
                             a = a.id
@@ -120,11 +114,6 @@ function ChatIndexDropDown({ setToggleDropdown }) {
                             :
                             'no-new-messages'
                         }></span>
-
-
-
-
-
                       </p>
                     </div>
                   </div>
@@ -166,7 +155,7 @@ function ChatIndexDropDown({ setToggleDropdown }) {
                           a = a.id
                           b = b.id
                           return b - a
-                        })[0].content.substr(0, 18)
+                        })[0].content.substr(0, 14)
                         }
 
 

@@ -79,15 +79,11 @@ function EditProfileModalComponent({ props, userData, setModalEditShow, setUserD
               onChange={handleImageUpload}
             />
           </Form.Group>
-
-
-
-
-
           <Form.Group className="mt-4">
             <Form.Label>Username</Form.Label>
             <Form.Control
               type="username"
+              className="profile-input"
               placeholder="Enter Username"
               name="username"
               value={formData.username}
@@ -104,17 +100,11 @@ function EditProfileModalComponent({ props, userData, setModalEditShow, setUserD
               <a className="text-primary no-decoration">Learn More</a>
             </Form.Text>
           </Form.Group>
-
-
-
-
-
-
-
           <Form.Group className="mt-4">
             <Form.Label>First Name</Form.Label>
             <Form.Control
               type="firstName"
+              className="profile-input"
               placeholder="Enter First Name"
               name="firstName"
               value={formData.firstName}
@@ -134,6 +124,7 @@ function EditProfileModalComponent({ props, userData, setModalEditShow, setUserD
             <Form.Label>Last Name</Form.Label>
             <Form.Control
               type="lastName"
+              className="profile-input"
               placeholder="Enter Last Name"
               name="lastName"
               value={formData.lastName}
@@ -153,6 +144,7 @@ function EditProfileModalComponent({ props, userData, setModalEditShow, setUserD
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
+              className="profile-input"
               placeholder="Enter Email"
               name="email"
               value={formData.email}
@@ -163,7 +155,7 @@ function EditProfileModalComponent({ props, userData, setModalEditShow, setUserD
             )}
           </Form.Group>
 
-          <Button variant="dark" className="my-3 w-100 following-btn" type="submit">Submit</Button>
+          <Button variant="danger" className="my-3 w-100 following-btn" type="submit">Submit</Button>
         </Form>
 
       </Modal.Body>
