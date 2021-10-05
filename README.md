@@ -69,7 +69,7 @@ Eoin Barr - [https://github.com/eoin-barr](https://github.com/eoin-barr)
 - Insomnia
 - TablePlus
 - Git
-- Github
+- GitHub
 - Firefox Developer Edition
 - Excalidraw (Wireframing)
 - Netlify (Frontend Deployment)
@@ -102,7 +102,7 @@ As we had a clear concept for the task ahead it didn’t take too long to get go
   <img src="https://res.cloudinary.com/dn11uqgux/image/upload/v1633444557/project-setup-test/Screenshot_2021-10-05_at_15.35.35_tolzx8.png" />
 </p>
 
-Our concept was clear so planning didn’t take long, which left us plenty of time to try and get our heads around how we would be able to make user-to-user messaging working. Using an ERD diagram to help visualise the relationships, we spent a couple of hours discussing the theory behind it and doing some research. There weren’t many examples of what we were trying to achieve online, but a couple of examples used WebSockets to get the instant messenger feel. This was what we wanted ideally but didn’t feel that bringing in a technology we weren’t familiar with was a good idea with such tight time constraints. 
+Our concept was clear so planning didn’t take long, which left us plenty of time to try and get our heads around how we would be able to make user-to-user messaging work. Using an ERD diagram to help visualise the relationships, we spent a couple of hours discussing the theory behind it and doing some research. There weren’t many examples of what we were trying to achieve online, but a couple of examples used WebSockets to get the instant messenger feel. This was what we wanted ideally but didn’t feel that bringing in a technology we weren’t familiar with was a good idea with such tight time constraints. 
 
 We settled on creating a ‘chatroom’ for each user-to-user message conversation that would enable us to check if conversations already existed between the two users. The Chats would then lend their primary key to all the messages sent between the users. 
 
@@ -168,7 +168,7 @@ class PostFilterView(ListAPIView):
        return Response(serialized_post.data, status=status.HTTP_200_OK)
 ```
 
-I was able to test this in Insomnia and came out well therefore I moved onto the search bar itself. I thought that the React Select async bar might be the right tool for this job. I read about how to use it and I checked that I was able to manipulate the styling in the way I wanted. All seemed to be working well. 
+I was able to test this in Insomnia and came out well, therefore I moved onto the search bar itself. I thought that the React Select async bar might be the right tool for this job. I read about how to use it and I checked that I was able to manipulate the styling in the way I wanted. All seemed to be working well. 
 
 One of the cool things about the React Select async bar is it can display load options as you type in a search term. The below function shows how it returned those results in the frontend for React Select to use.
 
