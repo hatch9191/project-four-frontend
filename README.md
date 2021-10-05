@@ -99,7 +99,7 @@ Eoin and I decided to partner for our second project together as we were both ke
 As we had a clear concept for the task ahead it didn’t take too long to get going on our initial planning stages, creating a list of core and stretch goals and also building out a fairly detailed wireframe (see image below).
 
 <p align="center">
-  <img src="https://res.cloudinary.com/dn11uqgux/image/upload/v1633442735/project-setup-test/p4_wexk13.png" />
+  <img src="https://res.cloudinary.com/dn11uqgux/image/upload/v1633444557/project-setup-test/Screenshot_2021-10-05_at_15.35.35_tolzx8.png" />
 </p>
 
 Our concept was clear so planning didn’t take long, which left us plenty of time to try and get our heads around how we would be able to make user-to-user messaging working. Using an ERD diagram to help visualise the relationships, we spent a couple of hours discussing the theory behind it and doing some research. There weren’t many examples of what we were trying to achieve online, but a couple of examples used WebSockets to get the instant messenger feel. This was what we wanted ideally but didn’t feel that bringing in a technology we weren’t familiar with was a good idea with such tight time constraints. 
