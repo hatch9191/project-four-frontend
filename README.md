@@ -201,7 +201,7 @@ return (
 )
 ```
 
-I did find that there was some work around with a useRef, however I had spent far too long on this issue by now and was looking to move on. Rather annoyingly this meant I wasn’t able to implement all of the functionality I had been working on. In the end we simply have a search bar which gives you a filtered list of post titles you can choose from which was fine as I had learnt lots from the process anyway. 
+I did find that there was some work around with a `useRef`, however I had spent far too long on this issue by now and was looking to move on. Rather annoyingly this meant I wasn’t able to implement all of the functionality I had been working on. In the end we simply have a search bar which gives you a filtered list of post titles you can choose from which was fine as I had learnt lots from the process anyway. 
 
 ### Day 7-8 - Custom Footer, Polishing Off Styling, Testing & Seeding
 
