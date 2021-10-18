@@ -20,8 +20,8 @@ This project was a really exciting one as it gave us the chance to perhaps be a 
 
 Please feel free to create your own account or login using the following credentials:
 
-username - Harry
-password - pass
+- username: Harry
+- password: pass
 
 You can view the deployed project [HERE](https://bit.ly/3me6jAg).
 
